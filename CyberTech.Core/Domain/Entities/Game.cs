@@ -7,7 +7,7 @@
         public int MaxUserCnt { get; set; }          
 
         public virtual ICollection<GameTeam>? GameTeams { get; set; }
-        public virtual ICollection<Tournament>? Tournaments { get; set; }
+     //   public virtual ICollection<Tournament>? Tournaments { get; set; }
     }
 
 

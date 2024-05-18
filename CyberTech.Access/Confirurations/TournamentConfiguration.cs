@@ -17,10 +17,10 @@ namespace CyberTech.DataAccess.Confirurations
             builder.Property(e => e.PrizFund).IsRequired();
             builder.Property(e => e.TourRating).IsRequired();
 
-            builder.HasOne(e => e.Game)
+          /*  builder.HasOne(e => e.Game)
                    .WithMany(g => g.Tournaments)
                    .HasForeignKey(e => e.GameId)
-                   .OnDelete(DeleteBehavior.Cascade);
+                   .OnDelete(DeleteBehavior.Cascade);*/
 
             builder.HasMany(e => e.GameTeams)
                    .WithOne(gt => gt.Tournament)
