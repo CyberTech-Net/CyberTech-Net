@@ -10,7 +10,7 @@ namespace CyberTech.Api.Controllers
     /// Таблица "Встречи турнира"
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TournamentMeetController : ControllerBase
     {
         private readonly ITournamentMeetService _service;

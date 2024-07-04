@@ -10,7 +10,7 @@ namespace CyberTech.Api.Controllers
     /// Справочник "Игры"
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class GameTypeController : ControllerBase
     {
         private readonly IGameTypeService _service;

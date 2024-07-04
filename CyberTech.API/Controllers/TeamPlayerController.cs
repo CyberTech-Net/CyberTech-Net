@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CyberTech.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TeamPlayerController : ControllerBase
     {
         private readonly ITeamPlayerService _service;

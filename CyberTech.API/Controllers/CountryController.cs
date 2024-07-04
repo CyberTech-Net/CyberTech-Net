@@ -10,7 +10,8 @@ namespace CyberTech.API.Controllers
     /// Справочник "Страны"
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
+
     public class CountryController : ControllerBase
     {
         private readonly ICountryService _service;

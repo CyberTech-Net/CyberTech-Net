@@ -9,7 +9,7 @@ namespace CyberTech.API.Controllers
     /// Таблица "Роли"
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class RoleController : ControllerBase
     {
         private readonly IRoleService _service;

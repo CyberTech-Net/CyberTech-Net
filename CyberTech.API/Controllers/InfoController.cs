@@ -10,7 +10,7 @@ namespace CyberTech.Api.Controllers
     /// Таблица "Новости"
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class InfoController : Controller
     {
         private readonly IInfoService _service;

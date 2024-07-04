@@ -10,7 +10,7 @@ namespace CyberTech.Api.Controllers
     /// Таблица "Игроки"
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
         private readonly IPlayerService _service;

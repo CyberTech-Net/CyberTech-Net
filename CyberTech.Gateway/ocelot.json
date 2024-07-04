@@ -1,0 +1,471 @@
+{
+
+  "Routes": [
+    //"CyberTechApi": "https://localhost:7050",
+
+    // Countries 
+    {
+      "DownstreamPathTemplate": "/api/country",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/country",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/country/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/country/{id}",
+      "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ]
+      //  "AuthenticationOptions": {
+      //    "AuthenticationProviderKey": "Bearer"
+      //  }
+    },
+    {
+      "DownstreamPathTemplate": "/api/country",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/country",
+      "UpstreamHttpMethod": [ "POST" ]
+      // "AuthenticationOptions": {
+      //   "AuthenticationProviderKey": "Bearer"
+      // }
+    },
+
+
+    //"GameType"
+    {
+      "DownstreamPathTemplate": "/api/GameType",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/GameType",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/GameType/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/GameType/{id}",
+      "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ]
+      //  "AuthenticationOptions": {
+      //    "AuthenticationProviderKey": "Bearer"
+      //  }
+    },
+    {
+      "DownstreamPathTemplate": "/api/GameType",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/GameType",
+      "UpstreamHttpMethod": [ "POST" ]
+      // "AuthenticationOptions": {
+      //   "AuthenticationProviderKey": "Bearer"
+      // }
+    },
+
+    //info
+
+    {
+      "DownstreamPathTemplate": "/api/Info",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Info",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Info/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Info/{id}",
+      "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ]
+      //  "AuthenticationOptions": {
+      //    "AuthenticationProviderKey": "Bearer"
+      //  }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Info",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Info",
+      "UpstreamHttpMethod": [ "POST" ]
+      // "AuthenticationOptions": {
+      //   "AuthenticationProviderKey": "Bearer"
+      // }
+    },
+
+    //Player
+
+    {
+      "DownstreamPathTemplate": "/api/Player",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Player",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Player/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Player/{id}",
+      "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ]
+      //  "AuthenticationOptions": {
+      //    "AuthenticationProviderKey": "Bearer"
+      //  }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Player",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Player",
+      "UpstreamHttpMethod": [ "POST" ]
+      // "AuthenticationOptions": {
+      //   "AuthenticationProviderKey": "Bearer"
+      // }
+    },
+
+    //Role
+
+    {
+      "DownstreamPathTemplate": "/api/Role",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Role",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+
+    //Team
+
+    {
+      "DownstreamPathTemplate": "/api/Team",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Team",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Team/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Team/{id}",
+      "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ]
+      //  "AuthenticationOptions": {
+      //    "AuthenticationProviderKey": "Bearer"
+      //  }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Team",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Team",
+      "UpstreamHttpMethod": [ "POST" ]
+      // "AuthenticationOptions": {
+      //   "AuthenticationProviderKey": "Bearer"
+      // }
+    },
+
+    //TeamPlayer
+
+    {
+      "DownstreamPathTemplate": "/api/TeamPlayer",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/TeamPlayer",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/TeamPlayer/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/TeamPlayer/{id}",
+      "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ]
+      //  "AuthenticationOptions": {
+      //    "AuthenticationProviderKey": "Bearer"
+      //  }
+    },
+    {
+      "DownstreamPathTemplate": "/api/TeamPlayer",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/TeamPlayer",
+      "UpstreamHttpMethod": [ "POST" ]
+      // "AuthenticationOptions": {
+      //   "AuthenticationProviderKey": "Bearer"
+      // }
+    },
+
+    // Tournament
+    {
+      "DownstreamPathTemplate": "/api/Tournament",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Tournament",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Tournament/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Tournament/{id}",
+      "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ]
+      //  "AuthenticationOptions": {
+      //    "AuthenticationProviderKey": "Bearer"
+      //  }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Tournament",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Tournament",
+      "UpstreamHttpMethod": [ "POST" ]
+      // "AuthenticationOptions": {
+      //   "AuthenticationProviderKey": "Bearer"
+      // }
+    },
+    //TournamentMeet
+
+    {
+      "DownstreamPathTemplate": "/api/TournamentMeet",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/TournamentMeet",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/TournamentMeet/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/TournamentMeet/{id}",
+      "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ]
+      //  "AuthenticationOptions": {
+      //    "AuthenticationProviderKey": "Bearer"
+      //  }
+    },
+    {
+      "DownstreamPathTemplate": "/api/TournamentMeet",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/TournamentMeet",
+      "UpstreamHttpMethod": [ "POST" ]
+      // "AuthenticationOptions": {
+      //   "AuthenticationProviderKey": "Bearer"
+      // }
+    },
+    //TournamentMeetTeam
+    {
+      "DownstreamPathTemplate": "/api/TournamentMeetTeam",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/TournamentMeetTeam",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/TournamentMeetTeam/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/TournamentMeetTeam/{id}",
+      "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ]
+      //  "AuthenticationOptions": {
+      //    "AuthenticationProviderKey": "Bearer"
+      //  }
+    },
+    {
+      "DownstreamPathTemplate": "/api/TournamentMeetTeam",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7050
+        }
+      ],
+      "UpstreamPathTemplate": "/api/TournamentMeetTeam",
+      "UpstreamHttpMethod": [ "POST" ]
+      // "AuthenticationOptions": {
+      //   "AuthenticationProviderKey": "Bearer"
+      // }
+    },
+
+    //Storage "https://localhost:7047"
+
+    {
+      "DownstreamPathTemplate": "/api/storage",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7047
+        }
+      ],
+      "UpstreamPathTemplate": "/api/storage",
+      "UpstreamHttpMethod": [ "Get" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/storage/{id}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7047
+        }
+      ],
+      "UpstreamPathTemplate": "/api/storage/{id}",
+      "UpstreamHttpMethod": [ "Get", "DELETE" ]
+      //  "AuthenticationOptions": {
+      //    "AuthenticationProviderKey": "Bearer"
+      //  }
+    },
+    {
+      "DownstreamPathTemplate": "/api/storage",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7047
+        }
+      ],
+      "UpstreamPathTemplate": "/api/storage",
+      "UpstreamHttpMethod": [ "POST" ]
+      // "AuthenticationOptions": {
+      //   "AuthenticationProviderKey": "Bearer"
+      // }
+    }
+
+
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:7152"
+  }
+}
