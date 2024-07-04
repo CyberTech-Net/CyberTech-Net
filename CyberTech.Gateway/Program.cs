@@ -21,8 +21,22 @@ namespace CyberTech.Gateway
             }
             builder.Services.AddOcelot(builder.Configuration);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReactLocalhost",
+                        builder =>
+                        {
+                            builder.WithOrigins("http://localhost:3000")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod()
+                                .AllowAnyOrigin()
+                                .WithExposedHeaders("*");
+                        });
+            });
+
 
             var app = builder.Build();
+            app.UseCors("AllowReactLocalhost");
 
             app.MapGet("/", () => "Hello World!");
             app.UseOcelot().GetAwaiter().GetResult();

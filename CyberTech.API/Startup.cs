@@ -71,16 +71,7 @@ namespace CyberTech.API
                 c.IncludeXmlComments(xmlPath);
             });
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowReactLocalhost",
-                        builder =>
-                        {
-                            builder.WithOrigins("http://localhost:3000")
-                                .AllowAnyHeader()
-                                .AllowAnyMethod();
-                        });
-            });
+           
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -94,7 +85,7 @@ namespace CyberTech.API
             }
             
             app.UseHttpsRedirection();
-            app.UseCors("AllowReactLocalhost");
+           
 
             app.UseStaticFiles();
             app.UseCors();
