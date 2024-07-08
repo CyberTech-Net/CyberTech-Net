@@ -21,9 +21,14 @@
         public string Description { get; set; } = string.Empty;
 
         /// <summary>
-        /// Картинка с логотипом игры.
+        /// Жанр игры.
         /// </summary>
-        public int? MongoGameTypePic { get; set; }
+        public string Category { get; set; }
+
+        /// <summary>
+        /// Картинка
+        /// </summary>
+        public string ImageId { get; set; }
 
         /// <summary>
         /// Турниры.

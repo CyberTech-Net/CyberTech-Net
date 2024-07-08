@@ -12,8 +12,10 @@ namespace CyberTech.DataAccess.Confirurations
 
             builder.Property<string>(e=>e.TitleGame).IsRequired().HasMaxLength(50);
             builder.Property<string>(e=>e.Description).IsRequired().HasMaxLength(500);
+            builder.Property<string>(e=>e.Category).IsRequired().HasMaxLength(50);  
+            builder.Property<string>(e=>e.ImageId).IsRequired().HasMaxLength(50);
             
-    }
+        }
     }
     
 }

@@ -41,6 +41,7 @@ namespace CyberTech.Application.Services
             info.TextInfo = updatingInfoDto.TextInfo;
             info.TitleInfo = updatingInfoDto.TitleInfo;
             info.DataInfo = updatingInfoDto.DataInfo;
+            info.ImageId = updatingInfoDto.ImageId;
             _infoRepository.Update(info);
             await _infoRepository.SaveChangesAsync();
         }

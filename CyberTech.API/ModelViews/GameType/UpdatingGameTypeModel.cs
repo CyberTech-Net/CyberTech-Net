@@ -14,5 +14,15 @@
         /// Описание.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Жанр игры.
+        /// </summary>
+        public string Category { get; set; }
+
+        /// <summary>
+        /// Картинка.
+        /// </summary>
+        public string ImageId { get; set; }
     }
 }

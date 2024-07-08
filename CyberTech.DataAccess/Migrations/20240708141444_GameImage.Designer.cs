@@ -4,6 +4,7 @@ using CyberTech.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CyberTech.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240708141444_GameImage")]
+    partial class GameImage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,12 +89,8 @@ namespace CyberTech.DataAccess.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValue(new DateTime(2024, 7, 8, 0, 0, 0, 0, DateTimeKind.Local));
 
-                    b.Property<string>("ImageId")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)")
-                        .HasDefaultValue("");
+                    b.Property<int?>("MongoInfoPic")
+                        .HasColumnType("int");
 
                     b.Property<int?>("MongoInfoVideo")
                         .HasColumnType("int");

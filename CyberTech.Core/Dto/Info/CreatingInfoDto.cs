@@ -11,5 +11,6 @@ namespace CyberTech.Core.Dto.Info
         public string TitleInfo { get; set; }
         public string TextInfo { get; set; }
         public DateTime DataInfo { get; set; }
+        public string ImageId { get; set; }
     }
 }

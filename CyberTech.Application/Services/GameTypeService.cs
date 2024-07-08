@@ -41,6 +41,9 @@ namespace CyberTech.Application.Services
             }
             gameType.TitleGame  = updatingGameTypeDto.TitleGame;
             gameType.Description = updatingGameTypeDto.Description;
+            gameType.Category = updatingGameTypeDto.Category;
+            gameType.ImageId = updatingGameTypeDto.ImageId;
+
             _gameTypeRepository.Update(gameType);
             await _gameTypeRepository.SaveChangesAsync();
         }

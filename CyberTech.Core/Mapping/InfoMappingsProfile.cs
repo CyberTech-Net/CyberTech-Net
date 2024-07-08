@@ -12,12 +12,12 @@ namespace CyberTech.Core.Mapping
 
             CreateMap<CreatingInfoDto, InfoEntity>()
                 .ForMember(d => d.Id, map => map.Ignore())
-                .ForMember(d => d.MongoInfoPic, map => map.Ignore())
+          //      .ForMember(d => d.ImageId, map => map.Ignore())
                 .ForMember(d => d.MongoInfoVideo, map => map.Ignore());
 
             CreateMap<UpdatingInfoDto, InfoEntity>()
                 .ForMember(d => d.Id, map => map.Ignore())
-                .ForMember(d => d.MongoInfoPic, map => map.Ignore())
+           //     .ForMember(d => d.ImageId, map => map.Ignore())
                 .ForMember(d => d.MongoInfoVideo, map => map.Ignore());
         }
     }

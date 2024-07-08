@@ -28,7 +28,7 @@
         /// <summary>
         /// Картинка/фото.
         /// </summary>
-        public int? MongoInfoPic { get; set; }
+        public string ImageId { get; set; }
 
         /// <summary>
         /// Видео.
