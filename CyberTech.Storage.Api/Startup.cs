@@ -55,6 +55,17 @@ namespace CyberTech.Storage.Api
                 });
             }
 
+            //for testing
+            app.UseDeveloperExceptionPage();
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint
+            app.UseSwagger();
+            // Enable Swagger UI
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Storage");
+            });
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
