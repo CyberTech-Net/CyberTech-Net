@@ -466,6 +466,6 @@
 
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "https://asutp-web-001:7152"
+    "BaseUrl": "http://localhost:7152"
   }
 }
