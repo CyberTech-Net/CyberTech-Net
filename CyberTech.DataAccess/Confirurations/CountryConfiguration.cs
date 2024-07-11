@@ -9,9 +9,7 @@ namespace CyberTech.DataAccess.Confirurations
         public void Configure(EntityTypeBuilder<CountryEntity> builder)
         {
             builder.HasKey(e => e.Id);
-
             builder.Property(e => e.TitleCountry).IsRequired().HasMaxLength(50);
-
         }
     }
 

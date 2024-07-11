@@ -23,16 +23,6 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Получение списка игроков c пагинацией из таблицы "Игроки"
-        /// </summary>
-        [HttpGet("list/{page}/{itemsPerPage}")]
-        public async Task<IActionResult> GetPagedAsync(int page, int itemsPerPage)
-        {
-            var response = _mapper.Map<List<PlayerModel>>(await _service.GetPagedAsync(page, itemsPerPage));
-            return Ok(response);
-        }
-
-        /// <summary>
         /// Получение всего списка игроков из таблицы "Игроки"
         /// </summary>
         [HttpGet]

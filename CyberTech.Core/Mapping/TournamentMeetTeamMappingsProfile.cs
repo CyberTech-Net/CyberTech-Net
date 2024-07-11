@@ -10,7 +10,7 @@ namespace CyberTech.Core.Mapping
         {
             CreateMap<TournamentMeetTeamEntity, TournamentMeetTeamDto>()
                .ForMember(d => d.TournamentMeetId, map => map.MapFrom(m => m.TournamentMeetId))
-               .ForMember(d=>d.DataTournamentMeet, map => map.MapFrom(m => m.TournamentMeet.DataTournamentMeet))
+               .ForMember(d => d.DataTournamentMeet, map => map.MapFrom(m => m.TournamentMeet.DataTournamentMeet))
                .ForMember(d => d.TitleTournament, map => map.MapFrom(m => m.TournamentMeet.Tournament))
                .ForMember(d => d.TeamId, map => map.MapFrom(m => m.TeamId))
                .ForMember(d => d.TitleTeam, map => map.MapFrom(m => m.Team.TitleTeam));

@@ -1,5 +1,6 @@
 ﻿namespace CyberTech.Domain.Entities
 {
+    [Obsolete("Delete after creating the authorization server")]
     /// <summary>
     /// Роль пользователя.
     /// </summary>

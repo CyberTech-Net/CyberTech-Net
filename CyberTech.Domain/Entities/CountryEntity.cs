@@ -19,7 +19,7 @@
         /// <summary>
         /// Картинка с флагом страны.
         /// </summary>
-        public int? MongoCountryPic { get; set; }
+        public string ImageId { get; set; }
 
         /// <summary>
         /// Игроки.

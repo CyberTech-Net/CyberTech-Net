@@ -40,6 +40,7 @@ namespace CyberTech.Application.Services
             }
             team.TitleTeam = updatingTeamDto.TitleTeam;
             team.Founded = updatingTeamDto.Founded;
+            team.ImageId = updatingTeamDto.ImageId;
             _teamRepository.Update(team);
             await _teamRepository.SaveChangesAsync();
         }
@@ -53,12 +54,6 @@ namespace CyberTech.Application.Services
             }
             _teamRepository.Delete(team);
             await _teamRepository.SaveChangesAsync();
-        }
-
-        public async Task<ICollection<TeamDto>> GetPagedAsync(int page, int pageSize)
-        {
-            ICollection<TeamEntity> entities = await _teamRepository.GetPagedAsync(page, pageSize);
-            return _mapper.Map<ICollection<TeamEntity>, ICollection<TeamDto>>(entities);
         }
 
         public async Task<ICollection<TeamDto>> GetAllAsync(CancellationToken cancellationToken)

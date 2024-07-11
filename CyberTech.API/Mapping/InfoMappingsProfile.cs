@@ -9,7 +9,7 @@ namespace CyberTech.API.Mapping
         public InfoMappingsProfile()
         {
             CreateMap<InfoDto, InfoModel>()
-                .ForMember(d => d.DataInfo, map => map.MapFrom(m=>m.DataInfo.ToShortDateString()));
+                .ForMember(d => d.DataInfo, map => map.MapFrom(m => m.DataInfo.ToShortDateString()));
             CreateMap<CreatingInfoModel, CreatingInfoDto>();
             CreateMap<UpdatingInfoModel, UpdatingInfoDto>();
         }

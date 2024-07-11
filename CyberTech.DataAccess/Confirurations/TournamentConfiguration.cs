@@ -10,7 +10,6 @@ namespace CyberTech.DataAccess.Confirurations
         public void Configure(EntityTypeBuilder<TournamentEntity> builder)
         {
             builder.HasKey(e => e.Id);
-
             builder.Property<string>(e => e.TitleTournament).IsRequired().HasMaxLength(150);
             builder.Property<string>(e => e.TypeTournament).IsRequired().HasMaxLength(20);
             builder.Property(e => e.DataTournamentInit).IsRequired();
@@ -19,12 +18,10 @@ namespace CyberTech.DataAccess.Confirurations
             builder.Property(e => e.EarndTournament).IsRequired();     
             builder.Property<decimal>(e => e.EarndTournament).HasPrecision(10, 2);
             builder.Property<decimal>(x => x.EarndTournament).HasDefaultValue(0.0);
-
             builder.HasOne(e => e.GameType)
                    .WithMany(g=>g.Tournaments)
                    .HasForeignKey(e => e.GameTypeId)
                    .OnDelete(DeleteBehavior.Cascade);
-
         }
     }
 }

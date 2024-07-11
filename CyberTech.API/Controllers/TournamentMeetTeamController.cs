@@ -11,11 +11,11 @@ namespace CyberTech.API.Controllers
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class TournamentMeetTeam : ControllerBase
+    public class TournamentMeetTeamController : ControllerBase
     {
         private readonly ITournamentMeetTeamService _service;
         private readonly IMapper _mapper;
-        public TournamentMeetTeam(ITournamentMeetTeamService tournamentMeetTeamService, IMapper mapper)
+        public TournamentMeetTeamController(ITournamentMeetTeamService tournamentMeetTeamService, IMapper mapper)
         {
             _service = tournamentMeetTeamService;
             _mapper = mapper;

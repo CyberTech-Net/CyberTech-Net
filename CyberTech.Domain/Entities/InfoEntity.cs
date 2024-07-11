@@ -26,13 +26,8 @@
         public DateTime DataInfo { get; set; }
 
         /// <summary>
-        /// Картинка/фото.
+        /// Турниры.
         /// </summary>
-        public string ImageId { get; set; }
-
-        /// <summary>
-        /// Видео.
-        /// </summary>
-        public int? MongoInfoVideo { get; set; }
+        public virtual List<InfoImageEntity>? InfoImages { get; set; }
     }
 }

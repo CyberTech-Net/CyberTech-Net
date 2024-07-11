@@ -12,6 +12,7 @@ namespace CyberTech.DataAccess
         }
 
         public DbSet<InfoEntity> InfoList { get; set; }
+        public DbSet<InfoImageEntity> InfoImageList { get; set; }
         public DbSet<RoleEntity> Roles { get; set; }
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<GameTypeEntity> GameTypes { get; set; }

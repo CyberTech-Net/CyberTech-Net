@@ -40,8 +40,6 @@ namespace CyberTech.Application.Services
                 throw new Exception($"Запись с идентфикатором {id} не найдена");
             }
             gameType.TitleGame  = updatingGameTypeDto.TitleGame;
-            gameType.Description = updatingGameTypeDto.Description;
-            gameType.Category = updatingGameTypeDto.Category;
             gameType.ImageId = updatingGameTypeDto.ImageId;
 
             _gameTypeRepository.Update(gameType);

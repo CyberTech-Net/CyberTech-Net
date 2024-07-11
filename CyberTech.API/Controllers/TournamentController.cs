@@ -23,16 +23,6 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Получение списка турниров c пагинацией из таблицы "Турниры"
-        /// </summary>
-        [HttpGet("list/{page}/{itemsPerPage}")]
-        public async Task<IActionResult> GetPagedAsync(int page, int itemsPerPage)
-        {
-            var response = _mapper.Map<List<TournamentModel>>(await _service.GetPagedAsync(page, itemsPerPage));
-            return Ok(response);
-        }
-
-        /// <summary>
         /// Получение всего списка турниров из таблицы "Турниры"
         /// </summary>
         /// <param name="page"> Номер страницы. </param>

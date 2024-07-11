@@ -9,5 +9,6 @@
         public string SecondName { get; set; }
         public string BirthDate { get; set; }
         public string Country { get; set; }
+        public string ImageId { get; set; }
     }
 }

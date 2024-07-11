@@ -16,7 +16,12 @@
         /// Дата создания.
         /// </summary>
         public DateTime Founded { get; set; }
-        
+
+        /// <summary>
+        /// Фото.
+        /// </summary>
+        public string ImageId { get; set; }
+
         /// <summary>
         /// Игроки.
         /// </summary>

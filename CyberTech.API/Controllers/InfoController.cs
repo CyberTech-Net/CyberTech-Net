@@ -23,17 +23,6 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Получение новостей c пагинацией из таблицы "Новости"
-        /// </summary>
-        /// <returns></returns>
-        [HttpGet("list/{page}/{itemsPerPage}")]
-        public async Task<IActionResult> GetPagedAsync(int page, int itemsPerPage)
-        {
-            var response = _mapper.Map<List<InfoModel>>(await _service.GetPagedAsync(page, itemsPerPage));
-            return Ok(response);
-        }
-
-        /// <summary>
         /// Получение всего списка новостей из таблицы "Новости"
         /// </summary>
         /// <returns></returns>

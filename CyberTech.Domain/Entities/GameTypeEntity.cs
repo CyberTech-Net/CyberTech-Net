@@ -16,16 +16,6 @@
         public string TitleGame { get; set; } = string.Empty;
 
         /// <summary>
-        /// Описание.
-        /// </summary>
-        public string Description { get; set; } = string.Empty;
-
-        /// <summary>
-        /// Жанр игры.
-        /// </summary>
-        public string Category { get; set; }
-
-        /// <summary>
         /// Картинка
         /// </summary>
         public string ImageId { get; set; }

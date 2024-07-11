@@ -15,15 +15,13 @@ namespace CyberTech.Core.Mapping
             CreateMap<CreatingTournamentDto, TournamentEntity>()
                 .ForMember(d => d.Id, map => map.Ignore())
                 .ForMember(d => d.TournamentMeets, map => map.Ignore())
-                .ForMember(d => d.GameTypeId, map => map.MapFrom(m => m.GameTypeId))
-                .ForMember(d => d.MongoChat, map => map.Ignore())
+                .ForMember(d => d.GameTypeId, map => map.MapFrom(m => m.GameTypeId))                
                 .ForMember(d => d.GameType, map => map.Ignore());
 
             CreateMap<UpdatingTournamentDto, TournamentEntity>()
                 .ForMember(d => d.Id, map => map.Ignore())
                 .ForMember(d => d.TournamentMeets, map => map.Ignore())
-                .ForMember(d => d.GameTypeId, map => map.MapFrom(m => m.GameTypeId))
-                .ForMember(d => d.MongoChat, map => map.Ignore())
+                .ForMember(d => d.GameTypeId, map => map.MapFrom(m => m.GameTypeId))                
                 .ForMember(d => d.GameType, map => map.Ignore());
         }
     }

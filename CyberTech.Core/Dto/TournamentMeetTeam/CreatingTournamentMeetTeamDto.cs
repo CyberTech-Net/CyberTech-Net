@@ -8,5 +8,6 @@
         public decimal EarndTeam { get; set; }
         public int RatingTeam { get; set; }
         public bool Win { get; set; }
+        public bool GenComplete { get; set; }
     }
 }

@@ -38,7 +38,7 @@
         /// <summary>
         /// Фото.
         /// </summary>
-        public int? MongoPlayerPic { get; set; }
+        public string ImageId { get; set; }
 
         /// <summary>
         /// Страна.

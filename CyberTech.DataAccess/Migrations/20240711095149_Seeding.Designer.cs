@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CyberTech.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240617194413_Seeding")]
+    [Migration("20240711095149_Seeding")]
     partial class Seeding
     {
         /// <inheritdoc />
@@ -34,8 +34,9 @@ namespace CyberTech.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("MongoCountryPic")
-                        .HasColumnType("int");
+                    b.Property<string>("ImageId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TitleCountry")
                         .IsRequired()
@@ -53,13 +54,10 @@ namespace CyberTech.DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("ImageId")
                         .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<int?>("MongoGameTypePic")
-                        .HasColumnType("int");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("TitleGame")
                         .IsRequired()
@@ -80,13 +78,7 @@ namespace CyberTech.DataAccess.Migrations
                     b.Property<DateTime>("DataInfo")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 6, 17, 0, 0, 0, 0, DateTimeKind.Local));
-
-                    b.Property<int?>("MongoInfoPic")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("MongoInfoVideo")
-                        .HasColumnType("int");
+                        .HasDefaultValue(new DateTime(2024, 7, 11, 0, 0, 0, 0, DateTimeKind.Local));
 
                     b.Property<string>("TextInfo")
                         .IsRequired()
@@ -101,6 +93,26 @@ namespace CyberTech.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("InfoList");
+                });
+
+            modelBuilder.Entity("CyberTech.Domain.Entities.InfoImageEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ImageId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("InfoId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InfoId");
+
+                    b.ToTable("InfoImageList");
                 });
 
             modelBuilder.Entity("CyberTech.Domain.Entities.PlayerEntity", b =>
@@ -120,8 +132,9 @@ namespace CyberTech.DataAccess.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("MongoPlayerPic")
-                        .HasColumnType("int");
+                    b.Property<string>("ImageId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NickName")
                         .IsRequired()
@@ -170,7 +183,11 @@ namespace CyberTech.DataAccess.Migrations
                     b.Property<DateTime>("Founded")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 6, 17, 0, 0, 0, 0, DateTimeKind.Local));
+                        .HasDefaultValue(new DateTime(2024, 7, 11, 0, 0, 0, 0, DateTimeKind.Local));
+
+                    b.Property<string>("ImageId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TitleTeam")
                         .IsRequired()
@@ -230,9 +247,6 @@ namespace CyberTech.DataAccess.Migrations
                     b.Property<Guid>("GameTypeId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("MongoChat")
-                        .HasColumnType("int");
-
                     b.Property<string>("PlaceName")
                         .IsRequired()
                         .HasMaxLength(150)
@@ -285,6 +299,9 @@ namespace CyberTech.DataAccess.Migrations
                         .HasPrecision(10, 2)
                         .HasColumnType("decimal(10,2)")
                         .HasDefaultValue(0m);
+
+                    b.Property<bool>("GenComplete")
+                        .HasColumnType("bit");
 
                     b.Property<int>("RatingTeam")
                         .ValueGeneratedOnAdd()
@@ -340,6 +357,17 @@ namespace CyberTech.DataAccess.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("CyberTech.Domain.Entities.InfoImageEntity", b =>
+                {
+                    b.HasOne("CyberTech.Domain.Entities.InfoEntity", "Info")
+                        .WithMany("InfoImages")
+                        .HasForeignKey("InfoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Info");
                 });
 
             modelBuilder.Entity("CyberTech.Domain.Entities.PlayerEntity", b =>
@@ -432,6 +460,11 @@ namespace CyberTech.DataAccess.Migrations
             modelBuilder.Entity("CyberTech.Domain.Entities.GameTypeEntity", b =>
                 {
                     b.Navigation("Tournaments");
+                });
+
+            modelBuilder.Entity("CyberTech.Domain.Entities.InfoEntity", b =>
+                {
+                    b.Navigation("InfoImages");
                 });
 
             modelBuilder.Entity("CyberTech.Domain.Entities.PlayerEntity", b =>

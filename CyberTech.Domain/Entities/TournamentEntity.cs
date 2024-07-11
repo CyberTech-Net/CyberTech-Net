@@ -48,12 +48,7 @@
         /// <summary>
         /// Призовой фонд.
         /// </summary>
-        public decimal EarndTournament { get; set; }
-
-        /// <summary>
-        /// Чат турнира.
-        /// </summary>
-        public int? MongoChat { get; set; }            
+        public decimal EarndTournament { get; set; }        
 
         /// <summary>
         /// Встречи турнира.

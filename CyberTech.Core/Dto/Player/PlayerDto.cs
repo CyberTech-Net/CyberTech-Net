@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CyberTech.Core.Dto.Player
+﻿namespace CyberTech.Core.Dto.Player
 {
     public class PlayerDto
     {
@@ -15,5 +9,6 @@ namespace CyberTech.Core.Dto.Player
         public DateTime BirthDate { get; set; }
         public Guid CountryId { get; set; }
         public string Country { get; set; }
+        public string ImageId { get; set; }
     }
 }

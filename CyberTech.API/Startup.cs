@@ -34,7 +34,7 @@ namespace CyberTech.API
                 cfg.AddProfile<TournamentMeetMappingsProfile>();
                 cfg.AddProfile<TeamPlayerMappingsProfile>();
                 cfg.AddProfile<TournamentMeetTeamMappingsProfile>();
-                cfg.AddProfile<RoleMappingsProfile>();
+                cfg.AddProfile<InfoImageMappingsProfile>();
                 cfg.AddProfile<Core.Mapping.CountryMappingsProfile>();
                 cfg.AddProfile<Core.Mapping.GameTypeMappingsProfile>();
                 cfg.AddProfile<Core.Mapping.InfoMappingsProfile>();
@@ -43,8 +43,8 @@ namespace CyberTech.API
                 cfg.AddProfile<Core.Mapping.TournamentMappingsProfile>();
                 cfg.AddProfile<Core.Mapping.TournamentMeetMappingsProfile>();
                 cfg.AddProfile<Core.Mapping.TeamPlayerMappingsProfile>();
-                cfg.AddProfile<Core.Mapping.TournamentMeetTeamMappingsProfile>();
-                cfg.AddProfile<Core.Mapping.RoleMappingsProfile>();
+                cfg.AddProfile<Core.Mapping.TournamentMeetTeamMappingsProfile>();                
+                cfg.AddProfile<Core.Mapping.InfoImageMappingsProfile>();
             });            
             configuration.AssertConfigurationIsValid();
             return configuration;

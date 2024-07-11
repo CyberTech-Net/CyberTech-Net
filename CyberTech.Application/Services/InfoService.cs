@@ -40,8 +40,7 @@ namespace CyberTech.Application.Services
             }
             info.TextInfo = updatingInfoDto.TextInfo;
             info.TitleInfo = updatingInfoDto.TitleInfo;
-            info.DataInfo = updatingInfoDto.DataInfo;
-            info.ImageId = updatingInfoDto.ImageId;
+            info.DataInfo = updatingInfoDto.DataInfo;            
             _infoRepository.Update(info);
             await _infoRepository.SaveChangesAsync();
         }
@@ -55,12 +54,6 @@ namespace CyberTech.Application.Services
             }
             _infoRepository.Delete(info);
             await _infoRepository.SaveChangesAsync();
-        }
-
-        public async Task<ICollection<InfoDto>> GetPagedAsync(int page, int pageSize)
-        {
-            ICollection<InfoEntity> entities = await _infoRepository.GetPagedAsync(page, pageSize);
-            return _mapper.Map<ICollection<InfoEntity>, ICollection<InfoDto>>(entities);
         }
 
         public async Task<ICollection<InfoDto>> GetAllAsync(CancellationToken cancellationToken)

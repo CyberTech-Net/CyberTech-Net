@@ -24,16 +24,6 @@ namespace CyberTech.API.Controllers
         }
 
         /// <summary>
-        /// Получение списка стран c пагинацией из справочника "Страны"
-        /// </summary>
-        [HttpGet("list/{page}/{itemsPerPage}")]
-        public async Task<IActionResult> GetPagedAsync(int page, int itemsPerPage)
-        {
-            var response = _mapper.Map<List<CountryModel>>(await _service.GetPagedAsync(page, itemsPerPage));
-            return Ok(response);
-        }
-
-        /// <summary>
         /// Получение всего списка стран из справочника "Страны"
         /// </summary>
         /// <param name="page"> Номер страницы. </param>

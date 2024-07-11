@@ -2,6 +2,7 @@
 {
     public class TournamentMeetTeamDto
     {
+        public Guid Id { get; set; }
         public Guid TournamentMeetId { get; set; }
         public string TitleTournament { get; set; }
         public DateTime DataTournamentMeet { get; set; }
@@ -11,5 +12,6 @@
         public decimal EarndTeam { get; set; }
         public int RatingTeam { get; set; }
         public bool Win { get; set; }
+        public bool GenComplete { get; set; }
     }
 }

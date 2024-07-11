@@ -1,7 +1,6 @@
 ﻿using CyberTech.Storage.Api.Dto;
 using CyberTech.Storage.Api.Services;
 using CyberTech.Storage.Core.Abstractions.Repositories;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Options;
 
 namespace CyberTech.Storage.Api

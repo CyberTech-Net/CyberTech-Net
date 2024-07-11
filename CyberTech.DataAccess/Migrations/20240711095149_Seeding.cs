@@ -17,7 +17,7 @@ namespace CyberTech.DataAccess.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TitleCountry = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    MongoCountryPic = table.Column<int>(type: "int", nullable: true)
+                    ImageId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,8 +30,7 @@ namespace CyberTech.DataAccess.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TitleGame = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    MongoGameTypePic = table.Column<int>(type: "int", nullable: true)
+                    ImageId = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -45,9 +44,7 @@ namespace CyberTech.DataAccess.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TitleInfo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     TextInfo = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    DataInfo = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 6, 17, 0, 0, 0, 0, DateTimeKind.Local)),
-                    MongoInfoPic = table.Column<int>(type: "int", nullable: true),
-                    MongoInfoVideo = table.Column<int>(type: "int", nullable: true)
+                    DataInfo = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 11, 0, 0, 0, 0, DateTimeKind.Local))
                 },
                 constraints: table =>
                 {
@@ -73,7 +70,8 @@ namespace CyberTech.DataAccess.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TitleTeam = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Founded = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 6, 17, 0, 0, 0, 0, DateTimeKind.Local))
+                    Founded = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2024, 7, 11, 0, 0, 0, 0, DateTimeKind.Local)),
+                    ImageId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -90,7 +88,7 @@ namespace CyberTech.DataAccess.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     SecondName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    MongoPlayerPic = table.Column<int>(type: "int", nullable: true)
+                    ImageId = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -114,8 +112,7 @@ namespace CyberTech.DataAccess.Migrations
                     DataTournamentInit = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataTournamentEnd = table.Column<DateTime>(type: "datetime2", nullable: false),
                     PlaceName = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    EarndTournament = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false, defaultValue: 0m),
-                    MongoChat = table.Column<int>(type: "int", nullable: true)
+                    EarndTournament = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false, defaultValue: 0m)
                 },
                 constraints: table =>
                 {
@@ -124,6 +121,25 @@ namespace CyberTech.DataAccess.Migrations
                         name: "FK_Tournaments_GameTypes_GameTypeId",
                         column: x => x.GameTypeId,
                         principalTable: "GameTypes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "InfoImageList",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    InfoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ImageId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_InfoImageList", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_InfoImageList_InfoList_InfoId",
+                        column: x => x.InfoId,
+                        principalTable: "InfoList",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -204,7 +220,8 @@ namespace CyberTech.DataAccess.Migrations
                     ScoreTeam = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     EarndTeam = table.Column<decimal>(type: "decimal(10,2)", precision: 10, scale: 2, nullable: false, defaultValue: 0m),
                     RatingTeam = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
-                    Win = table.Column<bool>(type: "bit", nullable: false, defaultValue: false)
+                    Win = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    GenComplete = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -222,6 +239,11 @@ namespace CyberTech.DataAccess.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_InfoImageList_InfoId",
+                table: "InfoImageList",
+                column: "InfoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Players_CountryId",
@@ -268,7 +290,7 @@ namespace CyberTech.DataAccess.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "InfoList");
+                name: "InfoImageList");
 
             migrationBuilder.DropTable(
                 name: "TeamPlayers");
@@ -278,6 +300,9 @@ namespace CyberTech.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "InfoList");
 
             migrationBuilder.DropTable(
                 name: "Players");

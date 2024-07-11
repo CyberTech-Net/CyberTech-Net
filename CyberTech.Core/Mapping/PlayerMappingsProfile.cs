@@ -14,15 +14,13 @@ namespace CyberTech.Core.Mapping
 
             CreateMap<CreatingPlayerDto, PlayerEntity>()
                 .ForMember(d => d.Id, map => map.Ignore())
-                .ForMember(d => d.TeamPlayers, map => map.Ignore())
-                .ForMember(d => d.MongoPlayerPic, map => map.Ignore())
+                .ForMember(d => d.TeamPlayers, map => map.Ignore())                
                 .ForMember(d => d.CountryId, map => map.MapFrom(m => m.CountryId))
                 .ForMember(d => d.Country, map => map.Ignore());
 
             CreateMap<UpdatingPlayerDto, PlayerEntity>()
                 .ForMember(d => d.Id, map => map.Ignore())
-                .ForMember(d => d.TeamPlayers, map => map.Ignore())
-                .ForMember(d => d.MongoPlayerPic, map => map.Ignore())
+                .ForMember(d => d.TeamPlayers, map => map.Ignore())                
                 .ForMember(d => d.CountryId, map => map.MapFrom(m => m.CountryId))
                 .ForMember(d => d.Country, map => map.Ignore());
         }

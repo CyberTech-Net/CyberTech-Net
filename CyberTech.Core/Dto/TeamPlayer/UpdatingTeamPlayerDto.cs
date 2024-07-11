@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CyberTech.Core.Dto.TeamPlayer
+﻿namespace CyberTech.Core.Dto.TeamPlayer
 {
     public class UpdatingTeamPlayerDto
     {

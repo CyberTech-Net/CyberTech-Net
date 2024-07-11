@@ -10,9 +10,7 @@ namespace CyberTech.DataAccess.Confirurations
         public void Configure(EntityTypeBuilder<TournamentMeetEntity> builder)
         {
             builder.HasKey(e => e.Id);
-
             builder.Property(e => e.DataTournamentMeet).IsRequired();
-
             builder.HasOne(e => e.Tournament)
                    .WithMany(g=>g.TournamentMeets)
                    .HasForeignKey(e => e.TournamentId)

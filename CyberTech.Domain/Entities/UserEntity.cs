@@ -1,5 +1,7 @@
-﻿namespace CyberTech.Domain.Entities
+﻿
+namespace CyberTech.Domain.Entities
 {
+    [Obsolete("Delete after creating the authorization server")]
     /// <summary>
     /// 
     /// </summary>

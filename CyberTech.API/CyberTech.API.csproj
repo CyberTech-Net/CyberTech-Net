@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ModelViews\User\**" />
+    <Content Remove="ModelViews\User\**" />
+    <EmbeddedResource Remove="ModelViews\User\**" />
+    <None Remove="ModelViews\User\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
       <PrivateAssets>all</PrivateAssets>
@@ -24,10 +31,6 @@
   <ItemGroup>
     <ProjectReference Include="..\CyberTech.Application\CyberTech.Application.csproj" />
     <ProjectReference Include="..\CyberTech.DataAccess\CyberTech.DataAccess.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ModelViews\User\" />
   </ItemGroup>
 
 </Project>

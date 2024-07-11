@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CyberTech.Core.Dto.Team
+﻿namespace CyberTech.Core.Dto.Team
 {
     public class CreatingTeamDto
     {
         public string TitleTeam { get; set; }
         public DateTime Founded { get; set; }
+        public string ImageId { get; set; }
     }
 }

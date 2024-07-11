@@ -8,5 +8,6 @@
         public decimal EarndTeam { get; set; }
         public int RatingTeam { get; set; }
         public byte Win { get; set; }
+        public byte GenComplete { get; set; }
     }
 }

@@ -59,12 +59,6 @@ namespace CyberTech.Application.Services
             await _tournamentRepository.SaveChangesAsync();
         }
 
-        public async Task<ICollection<TournamentDto>> GetPagedAsync(int page, int pageSize)
-        {
-            ICollection<TournamentEntity> entities = await _tournamentRepository.GetPagedAsync(page, pageSize);
-            return _mapper.Map<ICollection<TournamentEntity>, ICollection<TournamentDto>>(entities);
-        }
-
         public async Task<ICollection<TournamentDto>> GetAllAsync(CancellationToken cancellationToken)
         {
             ICollection<TournamentEntity> entities = await _tournamentRepository.GetAllAsync(cancellationToken);

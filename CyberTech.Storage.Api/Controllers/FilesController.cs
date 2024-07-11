@@ -1,6 +1,5 @@
 ﻿using CyberTech.Storage.Api.Dto;
 using CyberTech.Storage.Core.Abstractions.Repositories;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CyberTech.Storage.Api.Controllers

@@ -38,7 +38,8 @@ namespace CyberTech.Application.Services
             {
                 throw new Exception($"Запись с идентфикатором {id} не найдена");
             }
-            country.TitleCountry = updatingCountryDto.TitleCountry;            
+            country.TitleCountry = updatingCountryDto.TitleCountry;
+            country.ImageId = updatingCountryDto.ImageId;
             _countryRepository.Update(country);
             await _countryRepository.SaveChangesAsync();
         }
@@ -53,12 +54,6 @@ namespace CyberTech.Application.Services
             var country = await _countryRepository.GetAsync(id, CancellationToken.None);
             _countryRepository.Delete(country);
             await _countryRepository.SaveChangesAsync();
-        }
-
-        public async Task<ICollection<CountryDto>> GetPagedAsync(int page, int pageSize)
-        {
-            ICollection<CountryEntity> entities = await _countryRepository.GetPagedAsync(page, pageSize);
-            return _mapper.Map<ICollection<CountryEntity>, ICollection<CountryDto>>(entities);
         }
 
         public async Task<ICollection<CountryDto>> GetAllAsync(CancellationToken cancellationToken)

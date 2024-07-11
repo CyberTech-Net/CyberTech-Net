@@ -44,6 +44,7 @@ namespace CyberTech.Application.Services
             tournamentMeetTeam.RatingTeam = updatingTournamentMeetTeamDto.RatingTeam;
             tournamentMeetTeam.ScoreTeam = updatingTournamentMeetTeamDto.ScoreTeam;
             tournamentMeetTeam.Win = updatingTournamentMeetTeamDto.Win;
+            tournamentMeetTeam.GenComplete = updatingTournamentMeetTeamDto.GenComplete;
             _tournamentMeetTeamRepository.Update(tournamentMeetTeam);
             await _tournamentMeetTeamRepository.SaveChangesAsync();
         }

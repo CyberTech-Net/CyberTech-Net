@@ -9,10 +9,8 @@ namespace CyberTech.DataAccess.Confirurations
         public void Configure(EntityTypeBuilder<TeamEntity> builder)
         {
             builder.HasKey(e => e.Id);
-
             builder.Property<string>(e=>e.TitleTeam).IsRequired().HasMaxLength(50);
             builder.Property<DateTime>(x => x.Founded).HasDefaultValue(DateTime.Today);
-
         }
     }
     

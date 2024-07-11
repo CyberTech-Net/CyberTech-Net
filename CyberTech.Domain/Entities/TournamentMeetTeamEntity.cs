@@ -49,6 +49,11 @@
         /// Победа или проигрыш.
         /// </summary>
         public bool Win { get; set; }
+
+        /// <summary>
+        /// Генерация результатов сделана.
+        /// </summary>
+        public bool GenComplete { get; set; }
     }
 }
     

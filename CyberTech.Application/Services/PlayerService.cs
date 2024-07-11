@@ -43,6 +43,7 @@ namespace CyberTech.Application.Services
             player.SecondName = updatingPlayerDto.SecondName;
             player.BirthDate = updatingPlayerDto.BirthDate;
             player.CountryId = updatingPlayerDto.CountryId;
+            player.ImageId = updatingPlayerDto.ImageId;
             _playerRepository.Update(player);
             await _playerRepository.SaveChangesAsync();
         }
@@ -56,12 +57,6 @@ namespace CyberTech.Application.Services
             }
             _playerRepository.Delete(player);
             await _playerRepository.SaveChangesAsync();
-        }
-
-        public async Task<ICollection<PlayerDto>> GetPagedAsync(int page, int pageSize)
-        {
-            ICollection<PlayerEntity> entities = await _playerRepository.GetPagedAsync(page, pageSize);
-            return _mapper.Map<ICollection<PlayerEntity>, ICollection<PlayerDto>>(entities);
         }
 
         public async Task<ICollection<PlayerDto>> GetAllAsync(CancellationToken cancellationToken)

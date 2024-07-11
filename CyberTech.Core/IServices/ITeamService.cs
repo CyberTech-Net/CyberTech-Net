@@ -8,7 +8,6 @@ namespace CyberTech.Core.IServices
         Task<Guid> CreateAsync(CreatingTeamDto creatingTeamDto);
         Task UpdateAsync(Guid id, UpdatingTeamDto updatingTeamDto);
         Task DeleteAsync(Guid id);
-        Task<ICollection<TeamDto>> GetPagedAsync(int page, int pageSize);
         Task<ICollection<TeamDto>> GetAllAsync(CancellationToken cancellationToken);
     }
 }
