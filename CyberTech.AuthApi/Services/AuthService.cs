@@ -42,7 +42,7 @@ namespace CyberTech.AuthApi.Services
 
         public async Task<LoginResponseDto> Login(LoginRequestDto loginRequestDto)
         {
-            var user = _db.ApplicationUsers.FirstOrDefault(u => u.UserName.ToLower() == loginRequestDto.Email.ToLower());
+            var user = _db.ApplicationUsers.FirstOrDefault(u => u.Email.ToLower() == loginRequestDto.Email.ToLower());
 
 
             bool isValid = await _userManager.CheckPasswordAsync(user, loginRequestDto.Password);
@@ -61,7 +61,7 @@ namespace CyberTech.AuthApi.Services
                 Email = user.Email,
                 ID = user.Id,
                 Name = user.Name,
-                PhoneNumber = user.PhoneNumber
+                PhoneNumber = user.PhoneNumber               
             };
 
             LoginResponseDto loginResponseDto = new LoginResponseDto()
@@ -89,7 +89,7 @@ namespace CyberTech.AuthApi.Services
                 var result = await _userManager.CreateAsync(user, registrationRequestDto.Password);
                 if (result.Succeeded)
                 {
-                    var userToReturn = _db.ApplicationUsers.First(u => u.UserName == registrationRequestDto.Email);
+                    var userToReturn = _db.ApplicationUsers.First(u => u.UserName == registrationRequestDto.Name);
 
                     UserDto userDto = new()
                     {
