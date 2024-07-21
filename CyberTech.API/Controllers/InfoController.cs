@@ -2,6 +2,7 @@
 using CyberTech.API.ModelViews.Info;
 using CyberTech.Core.Dto.Info;
 using CyberTech.Core.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CyberTech.Api.Controllers
@@ -10,6 +11,7 @@ namespace CyberTech.Api.Controllers
     /// Таблица "Новости"
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class InfoController : Controller
     {

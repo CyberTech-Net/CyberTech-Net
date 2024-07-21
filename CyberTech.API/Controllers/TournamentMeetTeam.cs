@@ -2,6 +2,7 @@
 using CyberTech.API.ModelViews.TournamentMeetTeam;
 using CyberTech.Core.Dto.TournamentMeetTeam;
 using CyberTech.Core.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CyberTech.API.Controllers
@@ -10,6 +11,7 @@ namespace CyberTech.API.Controllers
     /// Таблица "Команды участники встречи турнира"
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class TournamentMeetTeam : ControllerBase
     {

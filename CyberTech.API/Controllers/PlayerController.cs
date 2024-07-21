@@ -2,6 +2,7 @@
 using CyberTech.API.ModelViews.Player;
 using CyberTech.Core.Dto.Player;
 using CyberTech.Core.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CyberTech.Api.Controllers
@@ -10,6 +11,7 @@ namespace CyberTech.Api.Controllers
     /// Таблица "Игроки"
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {

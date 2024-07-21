@@ -35,14 +35,6 @@ namespace CyberTech.AuthApi
             services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 1;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-            });
 
             services.AddControllers();
             //    .AddJsonOptions(options =>
@@ -51,58 +43,8 @@ namespace CyberTech.AuthApi
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
             services.AddScoped<IAuthService, AuthService>();
 
-
-
-            var key = Configuration.GetValue<string>("ApiSettings:Secret");
-            services.AddAuthentication(u =>
-            {
-                u.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                u.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(u =>
-            {
-                u.RequireHttpsMetadata = false;
-                u.SaveToken = true;
-                u.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
-
-
-
-            services.AddSwaggerGen(c =>
-            {
-                c.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new Microsoft.OpenApi.Models.OpenApiSecurityScheme
-                {
-                    Description =
-                    "JWT Authorization header using the Bearer scheme. \r\n\r\n " +
-                    "Enter 'Bearer' [space] and then your token in the text input below.\r\n\r\n" +
-                    "Example: \"Bearer 12345abcdef\"",
-                    Name = "Authorization",
-                    In = ParameterLocation.Header,
-                    Scheme = JwtBearerDefaults.AuthenticationScheme
-                });
-                c.AddSecurityRequirement(new OpenApiSecurityRequirement()
-                {
-                    {
-                       new OpenApiSecurityScheme
-                        {
-                            Reference = new OpenApiReference
-                                        {
-                                            Type = ReferenceType.SecurityScheme,
-                                            Id = "Bearer"
-                                        },
-                            Scheme = "oauth2",
-                            Name = "Bearer",
-                            In = ParameterLocation.Header
-                        },
-                        new List<string>()
-                    }
-                });
-            });
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
 
             services.AddCors(options =>
             {

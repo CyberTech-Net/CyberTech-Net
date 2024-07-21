@@ -1,5 +1,6 @@
 ﻿using CyberTech.Storage.Api.Dto;
 using CyberTech.Storage.Core.Abstractions.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace CyberTech.Storage.Api.Controllers
 {
     [Route("api/storage")]
     [ApiController]
+    [Authorize]
     public class FilesController : ControllerBase
     {
         private readonly IFileService _fileService;
@@ -18,6 +20,7 @@ namespace CyberTech.Storage.Api.Controllers
 
 
         [HttpGet("{id}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetFile(string id)
         {
             try

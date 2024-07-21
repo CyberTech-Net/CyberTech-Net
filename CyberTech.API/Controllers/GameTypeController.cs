@@ -2,6 +2,7 @@
 using CyberTech.API.ModelViews.GameType;
 using CyberTech.Core.Dto.GameType;
 using CyberTech.Core.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CyberTech.Api.Controllers
@@ -10,6 +11,7 @@ namespace CyberTech.Api.Controllers
     /// Справочник "Игры"
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class GameTypeController : ControllerBase
     {

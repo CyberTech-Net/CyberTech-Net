@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CyberTech.API.ModelViews.Role;
 using CyberTech.Core.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CyberTech.API.Controllers
@@ -9,6 +10,7 @@ namespace CyberTech.API.Controllers
     /// Таблица "Роли"
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class RoleController : ControllerBase
     {

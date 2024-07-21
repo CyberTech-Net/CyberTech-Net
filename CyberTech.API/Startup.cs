@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
 using CyberTech.API.Mapping;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 
 namespace CyberTech.API
 {
@@ -63,17 +67,71 @@ namespace CyberTech.API
             services.AddControllersWithViews().AddJsonOptions(x =>
                   x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
-            services.AddSwaggerGen(c =>
+            services.AddSwaggerGen(options  =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CyberTechNet.Api", Version = "v1" });
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "CyberTechNet.Api", Version = "v1" });
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+                options.IncludeXmlComments(xmlPath);
+
+                options.AddSecurityDefinition(name: JwtBearerDefaults.AuthenticationScheme, securityScheme: new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Description = "Enter the Bearer Authorization string as following: `Bearer Generated-JWT-Token`",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference= new OpenApiReference
+                            {
+                                Type=ReferenceType.SecurityScheme,
+                                Id=JwtBearerDefaults.AuthenticationScheme
+                            }
+                        }, new string[]{}
+                    }
+                });
             });
 
-           
+            this.ConfigureAuthentication(services);
+            services.AddAuthorization();
+
         }
-        
+
+        private void ConfigureAuthentication(IServiceCollection services)
+        {
+            var settingsSection = Configuration.GetSection("ApiSettings");
+
+            var secret = settingsSection.GetValue<string>("Secret");
+            var issuer = settingsSection.GetValue<string>("Issuer");
+            var audience = settingsSection.GetValue<string>("Audience");
+
+            var key = Encoding.ASCII.GetBytes(secret);
+
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+            {
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = true,
+                    ValidIssuer = issuer,
+                    ValidAudience = audience,
+                    ValidateAudience = true
+                };
+            });
+        }
+
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             
@@ -97,6 +155,8 @@ namespace CyberTech.API
             app.UseCors();
 
             app.UseRouting();
+
+            app.UseAuthentication();
             app.UseAuthorization();
           
             app.UseEndpoints(endpoints =>
