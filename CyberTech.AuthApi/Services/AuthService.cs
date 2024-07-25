@@ -91,6 +91,14 @@ namespace CyberTech.AuthApi.Services
                 {
                     var userToReturn = _db.ApplicationUsers.First(u => u.UserName == registrationRequestDto.Name);
 
+
+                    if (!_roleManager.RoleExistsAsync(registrationRequestDto.Role).GetAwaiter().GetResult())
+                    {
+                        //create role if it does not exist
+                        _roleManager.CreateAsync(new IdentityRole(registrationRequestDto.Role)).GetAwaiter().GetResult();
+                    }
+                    await _userManager.AddToRoleAsync(user, registrationRequestDto.Role);
+
                     UserDto userDto = new()
                     {
                         Email = userToReturn.Email,

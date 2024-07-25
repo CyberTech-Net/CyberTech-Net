@@ -64,8 +64,8 @@ namespace CyberTech.API
             services.AddControllers().AddMvcOptions(x =>
                 x.SuppressAsyncSuffixInActionNames = false);                     
 
-            services.AddControllersWithViews().AddJsonOptions(x =>
-                  x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+       /*     services.AddControllersWithViews().AddJsonOptions(x =>
+                  x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);*/
 
             services.AddSwaggerGen(options  =>
             {

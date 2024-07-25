@@ -54,7 +54,8 @@ namespace CyberTech.Storage.Api.Controllers
         public async Task<IActionResult> AddFile(IFormFile file)
         {
             var id = await _fileService.UploadFileAsync(file);
-            return Ok(id.ToString());
+            var data = new { fileId = id.ToString() }; 
+            return Ok(data);
         }
 
         [HttpDelete("{id}")]
@@ -64,7 +65,8 @@ namespace CyberTech.Storage.Api.Controllers
             {
                 var file = await _fileService.GetFileInfoAsync(id);
                 await _fileService.DeleteFile(id);
-                return Ok($"{file.Filename} has been deleted successfully");
+                var data = new { answer = $"{file.Filename} has been deleted successfully" };
+                return Ok(data);
             }
             catch (FileNotFoundException ex)
             {

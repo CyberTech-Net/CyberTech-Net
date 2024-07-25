@@ -28,6 +28,7 @@ namespace CyberTech.Api.Controllers
         /// Получение всего списка игр из справочника "Игры"
         /// </summary>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
             var response = _mapper.Map<List<GameTypeModel>>(await _service.GetAllAsync(cancellationToken));
