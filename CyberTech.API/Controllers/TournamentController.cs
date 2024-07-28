@@ -2,6 +2,7 @@
 using CyberTech.API.ModelViews.Tournament;
 using CyberTech.Core.Dto.Tournament;
 using CyberTech.Core.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CyberTech.Api.Controllers
@@ -10,6 +11,7 @@ namespace CyberTech.Api.Controllers
     /// Турниры
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class TournamentController(ITournamentService tournamentService, IMapper mapper) : ControllerBase
     {

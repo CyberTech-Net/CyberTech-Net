@@ -2,6 +2,7 @@
 using CyberTech.API.ModelViews.Team;
 using CyberTech.Core.Dto.Team;
 using CyberTech.Core.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CyberTech.Api.Controllers
@@ -10,6 +11,7 @@ namespace CyberTech.Api.Controllers
     /// Команды
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class TeamController(ITeamService teamService, IMapper mapper) : Controller
     {

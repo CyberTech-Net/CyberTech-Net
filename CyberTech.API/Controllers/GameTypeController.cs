@@ -2,6 +2,7 @@
 using CyberTech.API.ModelViews.GameType;
 using CyberTech.Core.Dto.GameType;
 using CyberTech.Core.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CyberTech.Api.Controllers
@@ -10,6 +11,7 @@ namespace CyberTech.Api.Controllers
     /// Игры
     /// </summary>
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class GameTypeController(IGameTypeService gameTypeService, IMapper mapper) : ControllerBase
     {
@@ -20,6 +22,7 @@ namespace CyberTech.Api.Controllers
         /// Получение всего списка игр
         /// </summary>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
             var response = _mapper.Map<List<GameTypeModel>>(await _service.GetAllAsync(cancellationToken));

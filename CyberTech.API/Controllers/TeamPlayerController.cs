@@ -2,11 +2,13 @@
 using CyberTech.API.ModelViews.TeamPlayer;
 using CyberTech.Core.Dto.TeamPlayer;
 using CyberTech.Core.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CyberTech.API.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class TeamPlayerController(ITeamPlayerService teamPlayerService, IMapper mapper) : ControllerBase
     {
