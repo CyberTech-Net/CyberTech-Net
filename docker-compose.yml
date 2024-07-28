@@ -1,0 +1,22 @@
+services:
+  #CyberTech Api
+  cybertech-administration-api:
+    build: CyberTech.API/
+    container_name: 'cybertech-administration-api'
+    restart: always
+    ports:
+      - "8091:8080"
+    environment:
+      - "ConnectionStrings:CyberTechAdministrationDb=Host=cybertech-administration-db;Database=cybertech_administration_db;Username=postgres;Password=docker"          
+    depends_on: 
+      - cybertech-administration-db
+
+  #CyberTech Db 
+  cybertech-administration-db:
+    image: "postgres:15.7"
+    container_name: 'cybertech-administration-db'
+    restart: always 
+    ports:
+      - 5433:5432
+    environment: 
+      - POSTGRES_PASSWORD=docker

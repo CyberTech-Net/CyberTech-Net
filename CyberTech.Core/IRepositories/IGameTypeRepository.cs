@@ -1,8 +1,8 @@
-﻿using CyberTech.Domain.Entities;
+﻿using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Core.IRepositories
 {
-    public interface IGameTypeRepository : IRepository<GameTypeEntity, Guid>
+    public interface IGameTypeRepository : IRepository<Game, Guid>
     {
 
     }

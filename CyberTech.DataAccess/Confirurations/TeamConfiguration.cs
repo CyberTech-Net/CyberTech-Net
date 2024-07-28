@@ -1,17 +1,18 @@
-﻿using CyberTech.Domain.Entities;
+﻿using CyberTech.Domain.Models.Handbooks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CyberTech.DataAccess.Confirurations
 {
-    public class TeamConfiguration : IEntityTypeConfiguration<TeamEntity>
+    public class TeamConfiguration : IEntityTypeConfiguration<Team>
     {
-        public void Configure(EntityTypeBuilder<TeamEntity> builder)
+        public void Configure(EntityTypeBuilder<Team> builder)
         {
             builder.HasKey(e => e.Id);
+            builder.ToTable("Teams", "handbooks");
 
-            builder.Property<string>(e=>e.TitleTeam).IsRequired().HasMaxLength(50);
-            builder.Property<DateTime>(x => x.Founded).HasDefaultValue(DateTime.Today);
+            builder.Property(e=>e.TitleTeam).IsRequired().HasMaxLength(50);
+            builder.Property(x => x.Founded);
 
         }
     }

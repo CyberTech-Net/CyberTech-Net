@@ -2,7 +2,7 @@
 using CyberTech.Core.Dto.Player;
 using CyberTech.Core.IRepositories;
 using CyberTech.Core.IServices;
-using CyberTech.Domain.Entities;
+using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Application.Services
 {
@@ -20,12 +20,12 @@ namespace CyberTech.Application.Services
         public async Task<PlayerDto> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             var info = await _playerRepository.GetAsync(id, CancellationToken.None);
-            return _mapper.Map<PlayerEntity, PlayerDto>(info);
+            return _mapper.Map<Player, PlayerDto>(info);
         }
 
         public async Task<Guid> CreateAsync(CreatingPlayerDto creatingPlayerDto)
         {
-            var player = _mapper.Map<CreatingPlayerDto, PlayerEntity>(creatingPlayerDto);
+            var player = _mapper.Map<CreatingPlayerDto, Player>(creatingPlayerDto);
             var creatingPlayer = await _playerRepository.AddAsync(player);
             await _playerRepository.SaveChangesAsync();
             return creatingPlayer.Id;
@@ -60,14 +60,14 @@ namespace CyberTech.Application.Services
 
         public async Task<ICollection<PlayerDto>> GetPagedAsync(int page, int pageSize)
         {
-            ICollection<PlayerEntity> entities = await _playerRepository.GetPagedAsync(page, pageSize);
-            return _mapper.Map<ICollection<PlayerEntity>, ICollection<PlayerDto>>(entities);
+            ICollection<Player> entities = await _playerRepository.GetPagedAsync(page, pageSize);
+            return _mapper.Map<ICollection<Player>, ICollection<PlayerDto>>(entities);
         }
 
         public async Task<ICollection<PlayerDto>> GetAllAsync(CancellationToken cancellationToken)
         {
-            ICollection<PlayerEntity> entities = await _playerRepository.GetAllAsync(cancellationToken);
-            return _mapper.Map<ICollection<PlayerEntity>, ICollection<PlayerDto>>(entities);
+            ICollection<Player> entities = await _playerRepository.GetAllAsync(cancellationToken);
+            return _mapper.Map<ICollection<Player>, ICollection<PlayerDto>>(entities);
         }
 
     }

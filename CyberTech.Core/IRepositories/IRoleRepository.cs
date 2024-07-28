@@ -1,8 +1,8 @@
-﻿using CyberTech.Domain.Entities;
+﻿using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Core.IRepositories
 {
-    public interface IRoleRepository : IRepository<RoleEntity, Guid>
+    public interface IRoleRepository : IRepository<Role, Guid>
     {
     }
 }

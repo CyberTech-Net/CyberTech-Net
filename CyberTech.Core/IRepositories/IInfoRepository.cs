@@ -1,10 +1,9 @@
-﻿
-using CyberTech.Domain.Entities;
+﻿using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Core.IRepositories
 {
-    public interface IInfoRepository : IRepository<InfoEntity, Guid>
+    public interface IInfoRepository : IRepository<News, Guid>
     {
-        Task<List<InfoEntity>> GetPagedAsync(int page, int itemsPerPage);
+        Task<List<News>> GetPagedAsync(int page, int itemsPerPage);
     }
 }

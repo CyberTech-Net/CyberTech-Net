@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CyberTech.API.Mapping;
+using CyberTech.API.Settings;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 using System.Text.Json.Serialization;
@@ -9,10 +10,13 @@ namespace CyberTech.API
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        public ConnectionOptions ConnectionSettings { get; init; } = new ConnectionOptions();
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            Configuration.GetSection(ConnectionOptions.Section).Bind(ConnectionSettings);
+            Configuration.GetSection($"{ConnectionOptions.Section}:{RmqOptions.Section}").Bind(ConnectionSettings.Rmq);
         }
 
         private static IServiceCollection InstallAutomapper(IServiceCollection services)
@@ -27,23 +31,17 @@ namespace CyberTech.API
             {
                 cfg.AddProfile<CountryMappingsProfile>();
                 cfg.AddProfile<GameTypeMappingsProfile>();
-                cfg.AddProfile<InfoMappingsProfile>();
                 cfg.AddProfile<TeamMappingsProfile>();
                 cfg.AddProfile<PlayerMappingsProfile>();
                 cfg.AddProfile<TournamentMappingsProfile>();
-                cfg.AddProfile<TournamentMeetMappingsProfile>();
                 cfg.AddProfile<TeamPlayerMappingsProfile>();
-                cfg.AddProfile<TournamentMeetTeamMappingsProfile>();
                 cfg.AddProfile<RoleMappingsProfile>();
                 cfg.AddProfile<Core.Mapping.CountryMappingsProfile>();
                 cfg.AddProfile<Core.Mapping.GameTypeMappingsProfile>();
-                cfg.AddProfile<Core.Mapping.InfoMappingsProfile>();
                 cfg.AddProfile<Core.Mapping.TeamMappingsProfile>();
                 cfg.AddProfile<Core.Mapping.PlayerMappingsProfile>();
                 cfg.AddProfile<Core.Mapping.TournamentMappingsProfile>();
-                cfg.AddProfile<Core.Mapping.TournamentMeetMappingsProfile>();
                 cfg.AddProfile<Core.Mapping.TeamPlayerMappingsProfile>();
-                cfg.AddProfile<Core.Mapping.TournamentMeetTeamMappingsProfile>();
                 cfg.AddProfile<Core.Mapping.RoleMappingsProfile>();
             });            
             configuration.AssertConfigurationIsValid();
@@ -52,16 +50,13 @@ namespace CyberTech.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             InstallAutomapper(services);
 
-            services.AddServices(Configuration);
+            services.AddServices(ConnectionSettings, Configuration);
             services.AddControllers();
 
-            services.AddControllers().AddMvcOptions(x =>
-                x.SuppressAsyncSuffixInActionNames = false);                     
-
-            services.AddControllersWithViews().AddJsonOptions(x =>
-                  x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
+            services.AddControllers().AddMvcOptions(x => x.SuppressAsyncSuffixInActionNames = false);                     
 
             services.AddSwaggerGen(c =>
             {
@@ -80,12 +75,9 @@ namespace CyberTech.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CyberTechNet.Api"));
             }
             // for testing
 
-            app.UseDeveloperExceptionPage();
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CyberTechNet.Api"));
 

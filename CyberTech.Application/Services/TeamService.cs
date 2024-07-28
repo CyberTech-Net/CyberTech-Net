@@ -2,7 +2,7 @@
 using CyberTech.Core.Dto.Team;
 using CyberTech.Core.IRepositories;
 using CyberTech.Core.IServices;
-using CyberTech.Domain.Entities;
+using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Application.Services
 {
@@ -20,12 +20,12 @@ namespace CyberTech.Application.Services
         public async Task<TeamDto> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             var team = await _teamRepository.GetAsync(id, CancellationToken.None);
-            return _mapper.Map<TeamEntity, TeamDto>(team);
+            return _mapper.Map<Team, TeamDto>(team);
         }
 
         public async Task<Guid> CreateAsync(CreatingTeamDto creatingTeamDto)
         {
-            var team = _mapper.Map<CreatingTeamDto, TeamEntity>(creatingTeamDto);
+            var team = _mapper.Map<CreatingTeamDto, Team>(creatingTeamDto);
             var creatingTeam = await _teamRepository.AddAsync(team);
             await _teamRepository.SaveChangesAsync();
             return creatingTeam.Id;
@@ -57,14 +57,14 @@ namespace CyberTech.Application.Services
 
         public async Task<ICollection<TeamDto>> GetPagedAsync(int page, int pageSize)
         {
-            ICollection<TeamEntity> entities = await _teamRepository.GetPagedAsync(page, pageSize);
-            return _mapper.Map<ICollection<TeamEntity>, ICollection<TeamDto>>(entities);
+            ICollection<Team> entities = await _teamRepository.GetPagedAsync(page, pageSize);
+            return _mapper.Map<ICollection<Team>, ICollection<TeamDto>>(entities);
         }
 
         public async Task<ICollection<TeamDto>> GetAllAsync(CancellationToken cancellationToken)
         {
-            ICollection<TeamEntity> entities = await _teamRepository.GetAllAsync(cancellationToken);
-            return _mapper.Map<ICollection<TeamEntity>, ICollection<TeamDto>>(entities);
+            ICollection<Team> entities = await _teamRepository.GetAllAsync(cancellationToken);
+            return _mapper.Map<ICollection<Team>, ICollection<TeamDto>>(entities);
         }
     }
 }

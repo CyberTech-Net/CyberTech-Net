@@ -6,23 +6,17 @@ using Microsoft.AspNetCore.Mvc;
 namespace CyberTech.API.Controllers
 {
     /// <summary>
-    /// Таблица "Роли"
+    /// Роли
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class RoleController : ControllerBase
+    public class RoleController(IRoleService roleService, IMapper mapper) : ControllerBase
     {
-        private readonly IRoleService _service;
-        private readonly IMapper _mapper;
-
-        public RoleController(IRoleService roleService, IMapper mapper)
-        {
-            _service = roleService;
-            _mapper = mapper;
-        }
+        private readonly IRoleService _service = roleService;
+        private readonly IMapper _mapper = mapper;
 
         /// <summary>
-        /// Получение всего списка игроков из таблицы "Роли"
+        /// Получить весь список ролей
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)

@@ -8,11 +8,7 @@ namespace CyberTech.DataAccess
         public static IServiceCollection ConfigureContext(this IServiceCollection services,
             string connectionString)
         {
-            services.AddDbContext<ApplicationDbContext>(optionsBuilder
-                => optionsBuilder
-                    //.UseNpgsql(connectionString));
-                    .UseLazyLoadingProxies()
-                    .UseSqlServer(connectionString));
+            services.AddDbContext<ApplicationDbContext>(optionsBuilder => optionsBuilder.UseNpgsql(connectionString));
             return services;
         }
     }

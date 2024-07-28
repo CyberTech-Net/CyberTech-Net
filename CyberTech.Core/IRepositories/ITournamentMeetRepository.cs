@@ -1,8 +1,8 @@
-﻿using CyberTech.Domain.Entities;
+﻿using CyberTech.Domain.Models.Tournaments;
 
 namespace CyberTech.Core.IRepositories
 {
-    public interface ITournamentMeetRepository : IRepository<TournamentMeetEntity, Guid>
+    public interface ITournamentMeetRepository : IRepository<Match, Guid>
     {
     }
 }

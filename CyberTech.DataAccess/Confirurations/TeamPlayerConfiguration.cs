@@ -1,14 +1,16 @@
-﻿using CyberTech.Domain.Entities;
+﻿using CyberTech.Domain.Models.Handbooks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace CyberTech.DataAccess.Confirurations
 {
-    public class TeamPlayerConfiguration : IEntityTypeConfiguration<TeamPlayerEntity>
+    public class TeamPlayerConfiguration : IEntityTypeConfiguration<TeamPlayer>
     {
-        public void Configure(EntityTypeBuilder<TeamPlayerEntity> builder)
+        public void Configure(EntityTypeBuilder<TeamPlayer> builder)
         {
             builder.HasKey(e => e.Id);
+
+            builder.ToTable("TeamPlayers", "handbooks");
 
             builder.Property(e => e.Year1).IsRequired();
             builder.Property(e => e.TeamId).IsRequired();

@@ -1,9 +1,9 @@
 ﻿using CyberTech.Core.IRepositories;
-using CyberTech.Domain.Entities;
+using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.DataAccess.Repositories
 {
-    public class InfoRepository : Repository<InfoEntity, Guid>, IInfoRepository
+    public class InfoRepository : Repository<News, Guid>, IInfoRepository
     {
         public InfoRepository(ApplicationDbContext context) : base(context)
         {

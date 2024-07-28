@@ -2,7 +2,7 @@
 using CyberTech.Core.Dto.TeamPlayer;
 using CyberTech.Core.IRepositories;
 using CyberTech.Core.IServices;
-using CyberTech.Domain.Entities;
+using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Application.Services
 {
@@ -20,12 +20,12 @@ namespace CyberTech.Application.Services
         public async Task<TeamPlayerDto> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             var teamPlayer = await _teamPlayerRepository.GetAsync(id, CancellationToken.None);
-            return _mapper.Map<TeamPlayerEntity, TeamPlayerDto>(teamPlayer);
+            return _mapper.Map<TeamPlayer, TeamPlayerDto>(teamPlayer);
         }
 
         public async Task<Guid> CreateAsync(CreatingTeamPlayerDto creatingTeamPlayerDto)
         {
-            var team = _mapper.Map<CreatingTeamPlayerDto, TeamPlayerEntity>(creatingTeamPlayerDto);
+            var team = _mapper.Map<CreatingTeamPlayerDto, TeamPlayer>(creatingTeamPlayerDto);
             var creatingTeamPlayer = await _teamPlayerRepository.AddAsync(team);
             await _teamPlayerRepository.SaveChangesAsync();
             return creatingTeamPlayer.Id;
@@ -59,8 +59,8 @@ namespace CyberTech.Application.Services
 
         public async Task<ICollection<TeamPlayerDto>> GetAllAsync(CancellationToken cancellationToken)
         {
-            ICollection<TeamPlayerEntity> entities = await _teamPlayerRepository.GetAllAsync(cancellationToken);
-            return _mapper.Map<ICollection<TeamPlayerEntity>, ICollection<TeamPlayerDto>>(entities);
+            ICollection<TeamPlayer> entities = await _teamPlayerRepository.GetAllAsync(cancellationToken);
+            return _mapper.Map<ICollection<TeamPlayer>, ICollection<TeamPlayerDto>>(entities);
         }
     }
 }

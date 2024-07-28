@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CyberTech.Core.Dto.Role;
-using CyberTech.Domain.Entities;
+using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Core.Mapping
 {
@@ -8,7 +8,7 @@ namespace CyberTech.Core.Mapping
     {
         public RoleMappingsProfile()
         {
-            CreateMap<RoleEntity, RoleDto>();
+            CreateMap<Role, RoleDto>();
         }
     }
 }

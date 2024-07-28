@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CyberTech.Core.Dto.Player;
-using CyberTech.Domain.Entities;
+using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Core.Mapping
 {
@@ -8,18 +8,18 @@ namespace CyberTech.Core.Mapping
     {
         public PlayerMappingsProfile()
         {
-            CreateMap<PlayerEntity, PlayerDto>()
+            CreateMap<Player, PlayerDto>()
                 .ForMember(d=>d.Country, map=>map.MapFrom(m=>m.Country.TitleCountry))
                 .ForMember(d => d.CountryId, map => map.MapFrom(m => m.CountryId));
 
-            CreateMap<CreatingPlayerDto, PlayerEntity>()
+            CreateMap<CreatingPlayerDto, Player>()
                 .ForMember(d => d.Id, map => map.Ignore())
                 .ForMember(d => d.TeamPlayers, map => map.Ignore())
                 .ForMember(d => d.MongoPlayerPic, map => map.Ignore())
                 .ForMember(d => d.CountryId, map => map.MapFrom(m => m.CountryId))
                 .ForMember(d => d.Country, map => map.Ignore());
 
-            CreateMap<UpdatingPlayerDto, PlayerEntity>()
+            CreateMap<UpdatingPlayerDto, Player>()
                 .ForMember(d => d.Id, map => map.Ignore())
                 .ForMember(d => d.TeamPlayers, map => map.Ignore())
                 .ForMember(d => d.MongoPlayerPic, map => map.Ignore())

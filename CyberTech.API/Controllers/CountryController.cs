@@ -7,25 +7,22 @@ using Microsoft.AspNetCore.Mvc;
 namespace CyberTech.API.Controllers
 {
     /// <summary>
-    /// Справочник "Страны"
+    /// Страны
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
 
-    public class CountryController : ControllerBase
+    public class CountryController(ICountryService countryService, IMapper mapper) : ControllerBase
     {
-        private readonly ICountryService _service;
-        private readonly IMapper _mapper;
-
-        public CountryController(ICountryService countryService, IMapper mapper)
-        {
-            _service = countryService;
-            _mapper = mapper;            
-        }
+        private readonly ICountryService _service = countryService;
+        private readonly IMapper _mapper = mapper;
 
         /// <summary>
-        /// Получение списка стран c пагинацией из справочника "Страны"
+        /// Получение списка стран c пагинацией 
         /// </summary>
+        /// <param name="page"> Номер страницы. </param>
+        /// <param name="itemsPerPage"> Объем страницы. </param>
+        /// <returns> Страница стран. </returns>
         [HttpGet("list/{page}/{itemsPerPage}")]
         public async Task<IActionResult> GetPagedAsync(int page, int itemsPerPage)
         {
@@ -34,11 +31,8 @@ namespace CyberTech.API.Controllers
         }
 
         /// <summary>
-        /// Получение всего списка стран из справочника "Страны"
+        /// Получение всего списка стран 
         /// </summary>
-        /// <param name="page"> Номер страницы. </param>
-        /// <param name="pageSize"> Объем страницы. </param>
-        /// <returns> Страница стран. </returns>
         [HttpGet]
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
@@ -47,7 +41,7 @@ namespace CyberTech.API.Controllers
         }
 
         /// <summary>
-        /// Получение записи по ее ID из справочника "Страны"
+        /// Получение страные по ее ID
         /// </summary>        
         /// <returns></returns>
         [HttpGet("{id:guid}")]
@@ -58,7 +52,7 @@ namespace CyberTech.API.Controllers
         }
 
         /// <summary>
-        /// Вставка записи в справочник "Страны"
+        /// Добавление страны
         /// </summary>        
         /// <returns></returns>
         [HttpPost]
@@ -68,7 +62,7 @@ namespace CyberTech.API.Controllers
         }
 
         /// <summary>
-        /// Изменение записи в справочнике "Страны"
+        /// Изменение данных о стране
         /// </summary>
         /// <returns></returns>
         [HttpPut("{id:guid}")]
@@ -79,7 +73,7 @@ namespace CyberTech.API.Controllers
         }
 
         /// <summary>
-        /// Удаление записи из справочника "Страны"
+        /// Удаление страны
         /// </summary>        
         /// <returns></returns>
         [HttpDelete("{id:guid}")]

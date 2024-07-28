@@ -2,7 +2,7 @@
 using CyberTech.Core.Dto.Role;
 using CyberTech.Core.IRepositories;
 using CyberTech.Core.IServices;
-using CyberTech.Domain.Entities;
+using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Application.Services
 {
@@ -19,8 +19,8 @@ namespace CyberTech.Application.Services
 
         public async Task<ICollection<RoleDto>> GetAllAsync(CancellationToken cancellationToken)
         {
-            ICollection<RoleEntity> entities = await _roleRepository.GetAllAsync(cancellationToken);
-            return _mapper.Map<ICollection<RoleEntity>, ICollection<RoleDto>>(entities);
+            ICollection<Role> entities = await _roleRepository.GetAllAsync(cancellationToken);
+            return _mapper.Map<ICollection<Role>, ICollection<RoleDto>>(entities);
         }
     }
 }

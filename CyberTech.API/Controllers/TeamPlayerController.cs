@@ -8,16 +8,10 @@ namespace CyberTech.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TeamPlayerController : ControllerBase
+    public class TeamPlayerController(ITeamPlayerService teamPlayerService, IMapper mapper) : ControllerBase
     {
-        private readonly ITeamPlayerService _service;
-        private readonly IMapper _mapper;
-
-        public TeamPlayerController(ITeamPlayerService teamPlayerService, IMapper mapper)
-        {
-            _service = teamPlayerService;
-            _mapper = mapper;
-        }
+        private readonly ITeamPlayerService _service = teamPlayerService;
+        private readonly IMapper _mapper = mapper;
 
         /// <summary>
         /// Получение всего списка игроков команды из таблицы "Состав команды"

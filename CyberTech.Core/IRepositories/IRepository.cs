@@ -1,4 +1,4 @@
-﻿using CyberTech.Domain.Entities;
+﻿using CyberTech.Domain.Interfaces;
 
 namespace CyberTech.Core.IRepositories
 {

@@ -1,9 +1,9 @@
-﻿using CyberTech.Domain.Entities;
+﻿using CyberTech.Domain.Models.Tournaments;
 
 namespace CyberTech.Core.IRepositories
 {
-    public interface ITournamentRepository : IRepository<TournamentEntity, Guid>
+    public interface ITournamentRepository : IRepository<Tournament, Guid>
     {
-        Task<List<TournamentEntity>> GetPagedAsync(int page, int itemsPerPage);
+        Task<List<Tournament>> GetPagedAsync(int page, int itemsPerPage);
     }
 }

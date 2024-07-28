@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyberTech.Domain", "CyberTe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyberTech.Application", "CyberTech.Application\CyberTech.Application.csproj", "{B1D49FD4-5ADC-4042-BD2E-79BDEF4F1DD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyberTech.Storage.Api", "CyberTech.Storage.Api\CyberTech.Storage.Api.csproj", "{8410C134-5406-48F6-B6C1-C394620026CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyberTech.Storage.Api", "CyberTech.Storage.Api\CyberTech.Storage.Api.csproj", "{8410C134-5406-48F6-B6C1-C394620026CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyberTech.Storage.Core", "CyberTech.Storage.Core\CyberTech.Storage.Core.csproj", "{10FB3616-5CAD-4B2C-8805-AF01CD577D0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyberTech.Storage.Core", "CyberTech.Storage.Core\CyberTech.Storage.Core.csproj", "{10FB3616-5CAD-4B2C-8805-AF01CD577D0D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GateWay", "GateWay", "{0EA0FA2F-C547-4201-A019-083C93B294C8}"
 EndProject
@@ -23,7 +23,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{89C2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{620E0A15-EBCF-4667-A2E0-F8EC42909C27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CyberTech.Gateway", "CyberTech.Gateway\CyberTech.Gateway.csproj", "{AE393EC7-A0F3-4434-826F-88967100995D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyberTech.Gateway", "CyberTech.Gateway\CyberTech.Gateway.csproj", "{AE393EC7-A0F3-4434-826F-88967100995D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3CE71F3C-C0A2-4ABE-BC2E-89B68067B44A}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyberTech.MessagesContracts", "CyberTech.MessagesContracts\CyberTech.MessagesContracts.csproj", "{A3B94132-A684-43FC-B103-DC2816F1E792}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CyberTech.Settings", "CyberTech.Settings\CyberTech.Settings.csproj", "{B8BCF47C-CC54-49B1-ADB2-71F5F2602937}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +72,14 @@ Global
 		{AE393EC7-A0F3-4434-826F-88967100995D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE393EC7-A0F3-4434-826F-88967100995D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE393EC7-A0F3-4434-826F-88967100995D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3B94132-A684-43FC-B103-DC2816F1E792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3B94132-A684-43FC-B103-DC2816F1E792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3B94132-A684-43FC-B103-DC2816F1E792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3B94132-A684-43FC-B103-DC2816F1E792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8BCF47C-CC54-49B1-ADB2-71F5F2602937}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8BCF47C-CC54-49B1-ADB2-71F5F2602937}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8BCF47C-CC54-49B1-ADB2-71F5F2602937}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8BCF47C-CC54-49B1-ADB2-71F5F2602937}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +93,8 @@ Global
 		{8410C134-5406-48F6-B6C1-C394620026CF} = {89C27BE0-FBF8-499A-9A05-D3294E34B0FB}
 		{10FB3616-5CAD-4B2C-8805-AF01CD577D0D} = {89C27BE0-FBF8-499A-9A05-D3294E34B0FB}
 		{AE393EC7-A0F3-4434-826F-88967100995D} = {0EA0FA2F-C547-4201-A019-083C93B294C8}
+		{A3B94132-A684-43FC-B103-DC2816F1E792} = {620E0A15-EBCF-4667-A2E0-F8EC42909C27}
+		{B8BCF47C-CC54-49B1-ADB2-71F5F2602937} = {620E0A15-EBCF-4667-A2E0-F8EC42909C27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F334B834-AE7E-463B-957D-62D5D939F242}

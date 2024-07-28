@@ -1,5 +1,6 @@
 using CyberTech.API;
 using CyberTech.DataAccess;
+using Microsoft.EntityFrameworkCore;
 
 public class Program
 {
@@ -9,7 +10,9 @@ public class Program
         using (var scope = host.Services.CreateScope())
         {
             var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-            //db.Database.Migrate();
+            //db.Database.EnsureDeleted();
+            db.Database.EnsureCreated();
+            db.SaveChanges();
         }
         host.Run();
     }
@@ -21,6 +24,12 @@ public class Program
                 webBuilder.UseStartup<Startup>();
                 webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
                 {
+                    config
+                      .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                      .AddJsonFile("appsettings.json", true, true)
+                      .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
+                      .AddJsonFile("connections.json")
+                      .AddJsonFile("rabbitMqQueueSettings.json");
                 });
             });
 }

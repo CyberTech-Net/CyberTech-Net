@@ -7,23 +7,17 @@ using Microsoft.AspNetCore.Mvc;
 namespace CyberTech.Api.Controllers
 {
     /// <summary>
-    /// Справочник "Игры"
+    /// Игры
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class GameTypeController : ControllerBase
+    public class GameTypeController(IGameTypeService gameTypeService, IMapper mapper) : ControllerBase
     {
-        private readonly IGameTypeService _service;
-        private readonly IMapper _mapper;
-
-        public GameTypeController(IGameTypeService gameTypeService, IMapper mapper)
-        {
-            _service = gameTypeService;
-            _mapper = mapper;
-        }
+        private readonly IGameTypeService _service = gameTypeService;
+        private readonly IMapper _mapper = mapper;
 
         /// <summary>
-        /// Получение всего списка игр из справочника "Игры"
+        /// Получение всего списка игр
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
@@ -33,7 +27,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Получение записи по ее ID из справочника "Игры"
+        /// Получение игры по ее ID
         /// </summary>
         /// <returns></returns>
         [HttpGet("{id:guid}")]
@@ -44,7 +38,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Вставка записи в справочник "Игры"
+        /// Добавление игры
         /// </summary>
         /// <returns></returns>
         [HttpPost]
@@ -54,7 +48,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Изменение записи в справочнике "Игры"
+        /// Изменение данных об игре
         /// </summary>
         /// <returns></returns>
         [HttpPut("{id:guid}")]
@@ -65,7 +59,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Удаление записи из справочника "Игры"
+        /// Удаление игры
         /// </summary>
         /// <returns></returns>
         [HttpDelete("{id:guid}")]

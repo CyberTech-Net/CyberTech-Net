@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CyberTech.Core.Dto.Country;
-using CyberTech.Domain.Entities;
+using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Core.Mapping
 {
@@ -8,14 +8,14 @@ namespace CyberTech.Core.Mapping
     {
         public CountryMappingsProfile() 
         {
-            CreateMap<CountryEntity, CountryDto>();
+            CreateMap<Country, CountryDto>();
 
-            CreateMap<CreatingCountryDto, CountryEntity>()
+            CreateMap<CreatingCountryDto, Country>()
                 .ForMember(d => d.Id, map => map.Ignore())
                 .ForMember(d=>d.MongoCountryPic, map =>map.Ignore())
                 .ForMember(d=>d.Players, map => map.Ignore());
 
-            CreateMap<UpdatingCountryDto, CountryEntity>()
+            CreateMap<UpdatingCountryDto, Country>()
                 .ForMember(d => d.Id, map => map.Ignore())
                 .ForMember(d => d.MongoCountryPic, map => map.Ignore())
                 .ForMember(d => d.Players, map => map.Ignore());

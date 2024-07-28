@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using CyberTech.Core.Dto.GameType;
-using CyberTech.Domain.Entities;
+using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Core.Mapping
 {
@@ -8,14 +8,14 @@ namespace CyberTech.Core.Mapping
     {
         public GameTypeMappingsProfile()
         {
-            CreateMap<GameTypeEntity, GameTypeDto> ();
+            CreateMap<Game, GameTypeDto> ();
 
-            CreateMap<CreatingGameTypeDto, GameTypeEntity>()
+            CreateMap<CreatingGameTypeDto, Game>()
                 .ForMember(d => d.Id, map => map.Ignore())
              //   .ForMember(d => d.ImageId, map => map.Ignore())
                 .ForMember(d => d.Tournaments, map => map.Ignore());
 
-            CreateMap<UpdatingGameTypeDto, GameTypeEntity>()
+            CreateMap<UpdatingGameTypeDto, Game>()
                 .ForMember(d => d.Id, map => map.Ignore())
           //      .ForMember(d => d.ImageId, map => map.Ignore())
                 .ForMember(d => d.Tournaments, map => map.Ignore());

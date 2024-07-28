@@ -7,23 +7,17 @@ using Microsoft.AspNetCore.Mvc;
 namespace CyberTech.Api.Controllers
 {
     /// <summary>
-    /// Таблица "Новости"
+    /// Команды
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class TeamController : Controller
+    public class TeamController(ITeamService teamService, IMapper mapper) : Controller
     {
-        private readonly ITeamService _service;
-        private readonly IMapper _mapper;
-
-        public TeamController(ITeamService teamService, IMapper mapper)
-        {
-            _service = teamService;
-            _mapper = mapper;
-        }
+        private readonly ITeamService _service = teamService;
+        private readonly IMapper _mapper = mapper;
 
         /// <summary>
-        /// Получение команд c пагинацией из таблицы "Команды"
+        /// Получить команды c пагинацией
         /// </summary>
         [HttpGet("list/{page}/{itemsPerPage}")]
         public async Task<IActionResult> GetPagedAsync(int page, int itemsPerPage)
@@ -33,7 +27,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Получение всего списка команд из таблицы "Команды"
+        /// Получить весь список команд 
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
@@ -43,7 +37,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Получение записи по ее ID из таблицы "Команды"
+        /// Получить команду по ID
         /// </summary>        
         /// <returns></returns>
         [HttpGet("{id:guid}")]
@@ -54,7 +48,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Вставка записи в таблицу "Команды"
+        /// Добавить команду
         /// </summary>        
         /// <returns></returns>
         [HttpPost]
@@ -64,7 +58,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Изменение записи в таблице "Команды"
+        /// Изменить данные о команде
         /// </summary>
         /// <returns></returns>
         [HttpPut("{id:guid}")]
@@ -75,7 +69,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Удаление записи из таблицы "Команды"
+        /// Удалить команду
         /// </summary>        
         /// <returns></returns>
         [HttpDelete("{id:guid}")]

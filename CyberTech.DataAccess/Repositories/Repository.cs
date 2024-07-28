@@ -1,5 +1,5 @@
 ﻿using CyberTech.Core.IRepositories;
-using CyberTech.Domain.Entities;
+using CyberTech.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace CyberTech.DataAccess.Repositories

@@ -7,23 +7,17 @@ using Microsoft.AspNetCore.Mvc;
 namespace CyberTech.Api.Controllers
 {
     /// <summary>
-    /// Таблица "Игроки"
+    /// Игроки
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class PlayerController : ControllerBase
+    public class PlayerController(IPlayerService playerService, IMapper mapper) : ControllerBase
     {
-        private readonly IPlayerService _service;
-        private readonly IMapper _mapper;
-
-        public PlayerController(IPlayerService playerService, IMapper mapper)
-        {
-            _service = playerService;
-            _mapper = mapper;
-        }
+        private readonly IPlayerService _service = playerService;
+        private readonly IMapper _mapper = mapper;
 
         /// <summary>
-        /// Получение списка игроков c пагинацией из таблицы "Игроки"
+        /// Получить список игроков c пагинацией
         /// </summary>
         [HttpGet("list/{page}/{itemsPerPage}")]
         public async Task<IActionResult> GetPagedAsync(int page, int itemsPerPage)
@@ -33,7 +27,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Получение всего списка игроков из таблицы "Игроки"
+        /// Получить весь список игроков
         /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
@@ -43,7 +37,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Получение записи по ее ID из таблицы "Игроки"
+        /// Получить игрока по ID
         /// </summary>        
         /// <returns></returns>
         [HttpGet("{id:guid}")]
@@ -54,7 +48,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Вставка записи в таблице "Игроки"
+        /// Добавить игрока
         /// </summary>        
         /// <returns></returns>
         [HttpPost]
@@ -64,7 +58,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Изменение записи в таблице "Игроки"
+        /// Измененить данные об игроке
         /// </summary>
         /// <returns></returns>
         [HttpPut("{id:guid}")]
@@ -75,7 +69,7 @@ namespace CyberTech.Api.Controllers
         }
 
         /// <summary>
-        /// Удаление записи из таблицы "Игроки"
+        /// Удалить игрока
         /// </summary>        
         /// <returns></returns>
         [HttpDelete("{id:guid}")]

@@ -2,7 +2,7 @@
 using CyberTech.Core.Dto.Tournament;
 using CyberTech.Core.IRepositories;
 using CyberTech.Core.IServices;
-using CyberTech.Domain.Entities;
+using CyberTech.Domain.Models.Tournaments;
 
 namespace CyberTech.Application.Services
 {
@@ -20,12 +20,12 @@ namespace CyberTech.Application.Services
         public async Task<TournamentDto> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             var tournament = await _tournamentRepository.GetAsync(id, CancellationToken.None);
-            return _mapper.Map<TournamentEntity, TournamentDto>(tournament);
+            return _mapper.Map<Tournament, TournamentDto>(tournament);
         }
 
         public async Task<Guid> CreateAsync(CreatingTournamentDto creatingTournamentDto)
         {
-            var tournament = _mapper.Map<CreatingTournamentDto, TournamentEntity>(creatingTournamentDto);
+            var tournament = _mapper.Map<CreatingTournamentDto, Tournament>(creatingTournamentDto);
             var creatingTournament = await _tournamentRepository.AddAsync(tournament);
             await _tournamentRepository.SaveChangesAsync();
             return creatingTournament.Id;
@@ -39,8 +39,8 @@ namespace CyberTech.Application.Services
                 throw new Exception($"Запись с идентфикатором {id} не найдена");
             }
             tournament.TitleTournament = updatingTournamentDto.TitleTournament;
-            tournament.DataTournamentInit = updatingTournamentDto.DataTournamentInit;
-            tournament.DataTournamentEnd = updatingTournamentDto.DataTournamentEnd;
+            tournament.DateTournamentInit = updatingTournamentDto.DateTournamentInit;
+            tournament.DateTournamentEnd = updatingTournamentDto.DateTournamentEnd;
             tournament.PlaceName = updatingTournamentDto.PlaceName;
             tournament.EarndTournament = updatingTournamentDto.EarndTournament;
             tournament.GameTypeId = updatingTournamentDto.GameTypeId;
@@ -61,14 +61,14 @@ namespace CyberTech.Application.Services
 
         public async Task<ICollection<TournamentDto>> GetPagedAsync(int page, int pageSize)
         {
-            ICollection<TournamentEntity> entities = await _tournamentRepository.GetPagedAsync(page, pageSize);
-            return _mapper.Map<ICollection<TournamentEntity>, ICollection<TournamentDto>>(entities);
+            ICollection<Tournament> entities = await _tournamentRepository.GetPagedAsync(page, pageSize);
+            return _mapper.Map<ICollection<Tournament>, ICollection<TournamentDto>>(entities);
         }
 
         public async Task<ICollection<TournamentDto>> GetAllAsync(CancellationToken cancellationToken)
         {
-            ICollection<TournamentEntity> entities = await _tournamentRepository.GetAllAsync(cancellationToken);
-            return _mapper.Map<ICollection<TournamentEntity>, ICollection<TournamentDto>>(entities);
+            ICollection<Tournament> entities = await _tournamentRepository.GetAllAsync(cancellationToken);
+            return _mapper.Map<ICollection<Tournament>, ICollection<TournamentDto>>(entities);
         }
     }
 }

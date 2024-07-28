@@ -1,14 +1,14 @@
-﻿using CyberTech.Core.Dto.Info;
+﻿using CyberTech.Core.Dto.News;
 
 namespace CyberTech.Core.IServices
 {
     public interface IInfoService                
     {
-        Task<InfoDto> GetByIdAsync(Guid id, CancellationToken cancellationToken);
-        Task<Guid> CreateAsync(CreatingInfoDto creatingInfoDto);
-        Task UpdateAsync(Guid id, UpdatingInfoDto updatingInfoDto);
+        Task<NewsDto> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+        Task<Guid> CreateAsync(CreatingNewsDto creatingInfoDto);
+        Task UpdateAsync(Guid id, UpdatingNewsDto updatingInfoDto);
         Task DeleteAsync(Guid id);
-        Task<ICollection<InfoDto>> GetPagedAsync(int page, int pageSize);
-        Task<ICollection<InfoDto>> GetAllAsync(CancellationToken cancellationToken);
+        Task<List<NewsDto>> GetPagedAsync(int page, int pageSize);
+        Task<List<NewsDto>> GetAllAsync(CancellationToken cancellationToken);
     }
 }

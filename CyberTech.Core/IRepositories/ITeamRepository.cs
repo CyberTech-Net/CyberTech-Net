@@ -1,9 +1,9 @@
-﻿using CyberTech.Domain.Entities;
+﻿using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Core.IRepositories
 {
-    public interface ITeamRepository : IRepository<TeamEntity, Guid>
+    public interface ITeamRepository : IRepository<Team, Guid>
     {
-        Task<List<TeamEntity>> GetPagedAsync(int page, int itemsPerPage);
+        Task<List<Team>> GetPagedAsync(int page, int itemsPerPage);
     }
 }

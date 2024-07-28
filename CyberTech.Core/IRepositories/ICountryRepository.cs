@@ -1,9 +1,9 @@
-﻿using CyberTech.Domain.Entities;
+﻿using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Core.IRepositories
 {
-    public interface ICountryRepository : IRepository<CountryEntity, Guid>
+    public interface ICountryRepository : IRepository<Country, Guid>
     {
-        Task<List<CountryEntity>> GetPagedAsync(int page, int itemsPerPage);
+        Task<List<Country>> GetPagedAsync(int page, int itemsPerPage);
     }
 }

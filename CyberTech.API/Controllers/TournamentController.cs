@@ -7,20 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 namespace CyberTech.Api.Controllers
 {
     /// <summary>
-    /// Таблица "Турниры"
+    /// Турниры
     /// </summary>
     [ApiController]
     [Route("api/[controller]")]
-    public class TournamentController : ControllerBase
+    public class TournamentController(ITournamentService tournamentService, IMapper mapper) : ControllerBase
     {
-        private readonly ITournamentService _service;
-        private readonly IMapper _mapper;
-
-        public TournamentController(ITournamentService tournamentService, IMapper mapper)
-        {
-            _service = tournamentService;
-            _mapper = mapper;
-        }
+        private readonly ITournamentService _service = tournamentService;
+        private readonly IMapper _mapper = mapper;
 
         /// <summary>
         /// Получение списка турниров c пагинацией из таблицы "Турниры"

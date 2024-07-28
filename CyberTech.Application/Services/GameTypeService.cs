@@ -2,7 +2,7 @@
 using CyberTech.Core.Dto.GameType;
 using CyberTech.Core.IRepositories;
 using CyberTech.Core.IServices;
-using CyberTech.Domain.Entities;
+using CyberTech.Domain.Models.Handbooks;
 
 namespace CyberTech.Application.Services
 {
@@ -21,12 +21,12 @@ namespace CyberTech.Application.Services
         public async Task<GameTypeDto> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             var gameType = await _gameTypeRepository.GetAsync(id, CancellationToken.None);
-            return _mapper.Map<GameTypeEntity, GameTypeDto>(gameType);
+            return _mapper.Map<Game, GameTypeDto>(gameType);
         }
 
         public async Task<Guid> CreateAsync(CreatingGameTypeDto creatingGameTypeDto)
         {
-            var gameType = _mapper.Map<CreatingGameTypeDto, GameTypeEntity>(creatingGameTypeDto);
+            var gameType = _mapper.Map<CreatingGameTypeDto, Game>(creatingGameTypeDto);
             var creatingGameType = await _gameTypeRepository.AddAsync(gameType);
             await _gameTypeRepository.SaveChangesAsync();
             return creatingGameType.Id;
@@ -61,8 +61,8 @@ namespace CyberTech.Application.Services
 
         public async Task<ICollection<GameTypeDto>> GetAllAsync(CancellationToken cancellationToken)
         {
-            ICollection<GameTypeEntity> entities = await _gameTypeRepository.GetAllAsync(cancellationToken);
-            return _mapper.Map<ICollection<GameTypeEntity>, ICollection<GameTypeDto>>(entities);
+            ICollection<Game> entities = await _gameTypeRepository.GetAllAsync(cancellationToken);
+            return _mapper.Map<ICollection<Game>, ICollection<GameTypeDto>>(entities);
         }
     }
 }
