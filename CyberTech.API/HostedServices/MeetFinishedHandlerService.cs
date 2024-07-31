@@ -6,7 +6,6 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
 using System.Text.Json;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using MatchEndedQueueSettings = CyberTech.Settings.RabbitMqQueueSettings.MatchEnded;
 
 namespace CyberTech.API.HostedServices
@@ -24,9 +23,9 @@ namespace CyberTech.API.HostedServices
 
             using var scope = _services.CreateScope();
             var mqConnection = scope.ServiceProvider.GetRequiredService<IConnection>();
-            var a = scope.ServiceProvider.GetRequiredService<IMatchResultsService>();
+            var matchResultsService = scope.ServiceProvider.GetRequiredService<IMatchResultsService>();
             var channel = mqConnection.CreateModel();
-            _ = Task.Run(() => MatchEndedConsumer.Register(channel, _matchEndedQueueSettings.ExchangeName, _matchEndedQueueSettings.QueueName, _matchEndedQueueSettings.RoutingKey, a), stoppingToken);
+            _ = Task.Run(() => MatchEndedConsumer.Register(channel, _matchEndedQueueSettings, matchResultsService), stoppingToken);
 
             while (!stoppingToken.IsCancellationRequested)
             {
@@ -54,17 +53,17 @@ namespace CyberTech.API.HostedServices
 
     internal static class MatchEndedConsumer
     {
-        public static void Register(IModel channel, string exchangeName, string queueName, string routingKey, IMatchResultsService matchResultsService)
+        public static void Register(IModel channel, MatchEndedQueueSettings queueSettings, IMatchResultsService matchResultsService)
         {
+            channel.ExchangeDeclare(queueSettings.ExchangeName, queueSettings.Type, queueSettings.Durable, queueSettings.AutoDelete, null);
             channel.BasicQos(0, 1, false);
-            channel.QueueDeclare(queueName, false, false, false, null);
-            channel.QueueBind(queueName, exchangeName, routingKey, null);
+            channel.QueueDeclare(queueSettings.QueueName, queueSettings.Durable, false, queueSettings.AutoDelete, null);
+            channel.QueueBind(queueSettings.QueueName, queueSettings.ExchangeName, queueSettings.RoutingKey, null);
 
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += async (sender, e) =>
             {
                 var body = Encoding.UTF8.GetString(e.Body.ToArray());
-                //var bodyFixed = body.Substring(1, body.Length - 2).Replace("\\u0022", "\"");
                 var message = JsonSerializer.Deserialize<MatchEnded>(body);
                 channel.BasicAck(e.DeliveryTag, false);
                 await matchResultsService.CreateAsync(new CreatingResultDto(
@@ -74,9 +73,8 @@ namespace CyberTech.API.HostedServices
                     isWin: message.IsWin));
             };
 
-            channel.BasicConsume(queueName, false, consumer);
-            Console.WriteLine($"Subscribed to the queue with key {routingKey} (exchange name: {exchangeName})");
-            Console.ReadLine();
+            channel.BasicConsume(queueSettings.QueueName, false, consumer);
+            Console.WriteLine($"Subscribed to the queue {queueSettings.QueueName} with key {queueSettings.RoutingKey} (exchange name: {queueSettings.ExchangeName})");
         }
     }
 }

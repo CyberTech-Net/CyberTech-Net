@@ -6,8 +6,11 @@
     "Durable": "true"
   },
   "MatchEnded": {
-    "QueueName": "matches.e",
     "ExchangeName": "cybertech.direct",
-    "RoutingKey": "matches.ended"
+    "Type": "direct",
+    "Durable": "true",
+    "AutoDelete": "false",
+    "RoutingKey": "matches.ended",
+    "QueueName": "matches.e"
   }
 }

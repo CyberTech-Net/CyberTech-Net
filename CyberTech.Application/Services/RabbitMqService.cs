@@ -13,16 +13,10 @@ namespace CyberTech.Application.Services
 
         public void SendMessage(object obj)
         {
-            var message = JsonSerializer.Serialize(obj);
-            SendMessage(message);
-        }
-
-        public void SendMessage(string message)
-        {
             using var channel = _connection.CreateModel();
             channel.ExchangeDeclare(_queueSettings.ExchangeName, _queueSettings.ExchangeType, _queueSettings.Durable);
 
-            var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(message));
+            var body = Encoding.UTF8.GetBytes(JsonSerializer.Serialize(obj));
             channel.BasicPublish(exchange: _queueSettings.ExchangeName,
                 routingKey: _queueSettings.RoutingKey,
                 basicProperties: null,

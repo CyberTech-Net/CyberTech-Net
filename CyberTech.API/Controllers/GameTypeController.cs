@@ -45,6 +45,7 @@ namespace CyberTech.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> CreateAsync(CreatingGameTypeModel creatingGameTypeModel)
         {
             return Ok(await _service.CreateAsync(_mapper.Map<CreatingGameTypeDto>(creatingGameTypeModel)));

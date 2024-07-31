@@ -13,6 +13,8 @@ COPY ["CyberTech.API/CyberTech.API.csproj", "CyberTech.API/"]
 COPY ["CyberTech.Application/CyberTech.Application.csproj", "CyberTech.Application/"]
 COPY ["CyberTech.Core/CyberTech.Core.csproj", "CyberTech.Core/"]
 COPY ["CyberTech.Domain/CyberTech.Domain.csproj", "CyberTech.Domain/"]
+COPY ["CyberTech.MessagesContracts/CyberTech.MessagesContracts.csproj", "CyberTech.MessagesContracts/"]
+COPY ["CyberTech.Settings/CyberTech.Settings.csproj", "CyberTech.Settings/"]
 COPY ["CyberTech.DataAccess/CyberTech.DataAccess.csproj", "CyberTech.DataAccess/"]
 RUN dotnet restore "./CyberTech.API/CyberTech.API.csproj"
 COPY . .

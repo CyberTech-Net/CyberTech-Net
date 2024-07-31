@@ -3,9 +3,9 @@ using CyberTech.API.Mapping;
 using CyberTech.API.Settings;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
-using System.Text.Json.Serialization;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 
 namespace CyberTech.API
@@ -86,7 +86,7 @@ namespace CyberTech.API
                                 Type=ReferenceType.SecurityScheme,
                                 Id=JwtBearerDefaults.AuthenticationScheme
                             }
-                        }, new string[]{}
+                        }, Array.Empty<string>()
                     }
                 });
             });
