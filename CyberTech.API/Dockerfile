@@ -1,31 +1,30 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER app
-WORKDIR /app
-EXPOSE 8080
-EXPOSE 8081
-
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["CyberTech.API/CyberTech.API.csproj", "CyberTech.API/"]
-COPY ["CyberTech.Application/CyberTech.Application.csproj", "CyberTech.Application/"]
-COPY ["CyberTech.Core/CyberTech.Core.csproj", "CyberTech.Core/"]
-COPY ["CyberTech.Domain/CyberTech.Domain.csproj", "CyberTech.Domain/"]
-COPY ["CyberTech.MessagesContracts/CyberTech.MessagesContracts.csproj", "CyberTech.MessagesContracts/"]
-COPY ["CyberTech.Settings/CyberTech.Settings.csproj", "CyberTech.Settings/"]
-COPY ["CyberTech.DataAccess/CyberTech.DataAccess.csproj", "CyberTech.DataAccess/"]
-RUN dotnet restore "./CyberTech.API/CyberTech.API.csproj"
+
+# Копируем все файлы решения
 COPY . .
+
+# Создаем директорию для NuGet пакетов
+RUN mkdir -p /src/nugets
+
+# Восстанавливаем зависимости, собираем и пакуем MessagesContracts
+RUN dotnet restore "CyberTech.MessagesContracts/CyberTech.MessagesContracts.csproj"
+RUN dotnet build "CyberTech.MessagesContracts/CyberTech.MessagesContracts.csproj" -c Release
+RUN dotnet pack "CyberTech.MessagesContracts/CyberTech.MessagesContracts.csproj" -c Release -o /src/nugets
+
+# Восстанавливаем зависимости для основного проекта
+RUN dotnet restore "CyberTech.API/CyberTech.API.csproj"
+
+# Собираем проект
 WORKDIR "/src/CyberTech.API"
-RUN dotnet build "./CyberTech.API.csproj" -c $BUILD_CONFIGURATION -o /app/build
+RUN dotnet build "CyberTech.API.csproj" -c Release -o /app/build
 
+# Публикуем проект
 FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./CyberTech.API.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "CyberTech.API.csproj" -c Release -o /app/publish
 
-FROM base AS final
+# Финальный образ
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "CyberTech.API.dll"]

@@ -1,13 +1,13 @@
 services:
   #CyberTech Api
   cybertech-administration-api:
-    build: ""
+    build: ../CyberTech-Net/CyberTech.API/
     container_name: 'cybertech-administration-api'
     restart: always 
     ports:
       - "8091:8080"
     environment:
-      - "Connections:DBConnection=Host=cybertech-administration-db;Database=promocode_factory_administration_db;Username=postgres;Password=docker"    
+      - "Connections:DBConnection=Host=cybertech-administration-db;Database=cybertech-administration-db;Username=postgres;Password=docker"    
       - RMQSettings:Host=cybertech-rabbitmq
       - RMQSettings:VHost=/
       - RMQSettings:Login=cybertech
@@ -15,20 +15,26 @@ services:
     depends_on: 
       - cybertech-administration-db
       - rabbitmq
+    networks:
+      - network   
 
   #CyberTech Db 
   cybertech-administration-db:
-    image: "postgres:15.7"
+    image: "postgres:16"
     container_name: 'cybertech-administration-db'
     restart: always 
     ports:
       - 5433:5432
     environment: 
       - POSTGRES_PASSWORD=docker
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - network
 
   #MatchesService
   cybertech-matches-service:
-    build: ../CyberTech-Net.MatchesService/
+    build: ./MatchesService/
     container_name: 'cybertech-matches-service'
     restart: always 
     ports:
@@ -40,6 +46,7 @@ services:
       - RMQSettings:Password=cybertech
     depends_on: 
       - rabbitmq
+
 
   #RabbitMQ
   rabbitmq:
@@ -54,6 +61,13 @@ services:
       RABBITMQ_DEFAULT_PASS: cybertech  
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq  # Персистентное хранилище для данных
+    networks:
+      - network
 
 volumes:
+  postgres_data:
   rabbitmq_data:  # Том для хранения данных RabbitMQ
+
+networks:
+  network:
+    driver: bridge
