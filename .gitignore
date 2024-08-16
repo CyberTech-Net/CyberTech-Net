@@ -339,3 +339,4 @@ ASALocalRun/
 .localhistory/
 
 .vscode/
+/docker/docker.microservices/docker-compose.microservices start.bat.bak
