@@ -1,18 +1,14 @@
 {
   "Connections": {
     // "DBConnection": "Server=(localdb)\\mssqllocaldb;Database=CyberTech;Trusted_Connection=True;MultipleActiveResultSets=true",
-    "DBConnection": "Host=postgres2;Database=cybertech-administration-db;Username=postgres;Password=password;Port=5433"
-    //"RmqSettings": {
-    //  "Host": "rattlesnake-01.rmq.cloudamqp.com",
-    //  "VHost": "fiqzmnti",
-    //  "Login": "fiqzmnti",
-    //  "Password": "0L2Rw8i6KCON_2ihajKeUyybYMj6ELAc"
-    //}
-    //"RmqSettings": {
-    //  "Host": "localhost",
-    //  "VHost": "/",
-    //  "Login": "cybertech",
-    //  "Password": "cybertech"
-    //}
+    "DBConnection": "Host=postgres2;Database=postgres2;Username=postgres;Password=password;Port=5432",
+
+    "RmqSettings": {
+      "Host": "rabbitmqhost",
+      "VHost": "/",
+      "Login": "guest",
+      "Password": "guest"
+    }
   }
 }
+

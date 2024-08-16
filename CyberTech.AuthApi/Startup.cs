@@ -28,7 +28,7 @@ namespace CyberTech.AuthApi
 
             services.AddDbContext<ApplicationDbContext>(option =>
             {
-                option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                option.UseNpgsql(Configuration.GetConnectionString("DBConnection"));
             });
             services.Configure<JwtOptions>(Configuration.GetSection("ApiSettings:JwtOptions"));
 

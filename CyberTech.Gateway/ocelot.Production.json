@@ -1,7 +1,7 @@
 {
 
   "Routes": [
-    //"CyberTechApi": "https://asutp-web-001:7050",
+    //"CyberTechApi": "http://localhost:7050",
 
     // Countries 
     {
@@ -9,7 +9,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -21,7 +21,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -36,7 +36,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -54,7 +54,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -66,7 +66,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -81,7 +81,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -99,7 +99,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -111,7 +111,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -126,7 +126,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -144,7 +144,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -156,7 +156,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -171,7 +171,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -189,7 +189,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -204,7 +204,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -216,7 +216,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -231,7 +231,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -249,7 +249,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -261,7 +261,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -276,7 +276,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -293,7 +293,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -305,7 +305,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -320,7 +320,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -337,7 +337,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -349,7 +349,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -364,7 +364,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -380,7 +380,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -392,7 +392,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -407,7 +407,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7050
         }
       ],
@@ -418,14 +418,14 @@
       // }
     },
 
-    //Storage "https://asutp-web-001:7047"
+    //Storage "http://localhost:7047"
 
     {
       "DownstreamPathTemplate": "/api/storage",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7047
         }
       ],
@@ -437,7 +437,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7047
         }
       ],
@@ -452,7 +452,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "asutp-web-001",
+          "Host": "localhost",
           "Port": 7047
         }
       ],
@@ -466,6 +466,6 @@
 
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://asutp-web-001:7152"
+    "BaseUrl": "http://localhost:7152"
   }
 }

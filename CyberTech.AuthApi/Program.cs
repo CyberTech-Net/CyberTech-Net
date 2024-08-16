@@ -1,8 +1,4 @@
-
-using CyberTech.AuthApi.Services.IService;
-using CyberTech.AuthApi.Services;
-using Microsoft.AspNetCore.Identity;
-using System;
+using CyberTech.AuthApi.Data;
 
 namespace CyberTech.AuthApi
 {
@@ -11,7 +7,15 @@ namespace CyberTech.AuthApi
      
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var host = CreateHostBuilder(args).Build();
+            using (var scope = host.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                //db.Database.EnsureDeleted();
+                db.Database.EnsureCreated();
+                db.SaveChanges();
+            }
+            host.Run();
         }
 
 

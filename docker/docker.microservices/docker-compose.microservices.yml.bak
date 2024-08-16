@@ -72,6 +72,8 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - DBConnection=Host=postgres1;Database=postgres1;Username=postgres;Password=password;Port=5432
+    depends_on:
+      - postgres1
     networks:
       - myLocalNetwork
 

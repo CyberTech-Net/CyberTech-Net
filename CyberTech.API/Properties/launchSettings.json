@@ -1,4 +1,4 @@
-{
+/*{
   "profiles": {
     "http": {
       "commandName": "Project",
@@ -47,6 +47,32 @@
     "iisExpress": {
       "applicationUrl": "http://localhost:33943",
       "sslPort": 44386
+    }
+  }
+}*/
+
+{
+  "profiles": {
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true,
+      "useSSL": true
+    },
+    "Docker (Remote Debug)": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true,
+      "useSSL": true,
+      "httpPort": 7050,
+      "sslPort": 5292,
+      "dockerOptions": {
+        "runArgs": [
+          "--network=myLocalNetwork"
+        ]
+      }
     }
   }
 }
