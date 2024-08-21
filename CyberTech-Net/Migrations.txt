@@ -1,0 +1,8 @@
+dotnet ef migrations add Seeding --startup-project CyberTech.API/CyberTech.API.csproj --project CyberTech.DataAccess//CyberTech.DataAccess.csproj --context ApplicationDbContext
+
+dotnet ef database update --startup-project CyberTech.API/CyberTech.API.csproj --project CyberTech.DataAccess//CyberTech.DataAccess.csproj --context ApplicationDbContext
+
+sqllocaldb stop
+sqllocaldb delete
+
+dotnet tool install --global dotnet-ef --version 8.0.6
