@@ -32,6 +32,7 @@ namespace CyberTech.Api.Controllers
         /// Получить весь список команд 
         /// </summary>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
             var test = await _service.GetAllAsync(cancellationToken);
@@ -44,6 +45,7 @@ namespace CyberTech.Api.Controllers
         /// </summary>        
         /// <returns></returns>
         [HttpGet("{id:guid}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAsync(Guid id, CancellationToken cancellationToken)
         {
             var teamDto = await _service.GetByIdAsync(id, cancellationToken);

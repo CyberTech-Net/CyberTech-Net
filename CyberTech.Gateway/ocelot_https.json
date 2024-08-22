@@ -3,10 +3,10 @@
   "Routes": [
     //"CyberTechApi": "http://localhost:7050",
 
-   // Countries 
+    // Countries 
     {
       "DownstreamPathTemplate": "/api/country",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -18,7 +18,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/country/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -33,7 +33,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/country",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -43,7 +43,7 @@
       "UpstreamPathTemplate": "/api/country",
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
+        "AuthenticationProviderKey": "Bearer"
       }
     },
 
@@ -51,7 +51,7 @@
     //"GameType"
     {
       "DownstreamPathTemplate": "/api/GameType",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -63,7 +63,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/GameType/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -78,7 +78,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/GameType",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -88,7 +88,7 @@
       "UpstreamPathTemplate": "/api/GameType",
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
+        "AuthenticationProviderKey": "Bearer"
       }
     },
 
@@ -96,7 +96,7 @@
 
     {
       "DownstreamPathTemplate": "/api/Info",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -108,7 +108,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/Info/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -123,7 +123,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/Info",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -133,7 +133,7 @@
       "UpstreamPathTemplate": "/api/Info",
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
+        "AuthenticationProviderKey": "Bearer"
       }
     },
 
@@ -141,7 +141,7 @@
 
     {
       "DownstreamPathTemplate": "/api/Player",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -153,7 +153,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/Player/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -168,7 +168,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/Player",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -178,7 +178,7 @@
       "UpstreamPathTemplate": "/api/Player",
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
+        "AuthenticationProviderKey": "Bearer"
       }
     },
 
@@ -186,7 +186,7 @@
 
     {
       "DownstreamPathTemplate": "/api/Role",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -201,7 +201,7 @@
 
     {
       "DownstreamPathTemplate": "/api/Team",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -213,7 +213,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/Team/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -228,7 +228,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/Team",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -238,7 +238,7 @@
       "UpstreamPathTemplate": "/api/Team",
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
+        "AuthenticationProviderKey": "Bearer"
       }
     },
 
@@ -246,7 +246,7 @@
 
     {
       "DownstreamPathTemplate": "/api/TeamPlayer",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -258,7 +258,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/TeamPlayer/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -273,7 +273,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/TeamPlayer",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -283,14 +283,14 @@
       "UpstreamPathTemplate": "/api/TeamPlayer",
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
+        "AuthenticationProviderKey": "Bearer"
       }
     },
 
     //Tournament
     {
       "DownstreamPathTemplate": "/api/Tournament",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -302,7 +302,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/Tournament/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -317,7 +317,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/Tournament",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -327,14 +327,14 @@
       "UpstreamPathTemplate": "/api/Tournament",
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     //TournamentMeet
 
     {
       "DownstreamPathTemplate": "/api/TournamentMeet",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -346,7 +346,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/TournamentMeet/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -361,7 +361,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/TournamentMeet",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -371,13 +371,13 @@
       "UpstreamPathTemplate": "/api/TournamentMeet",
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     //TournamentMeetTeam
     {
       "DownstreamPathTemplate": "/api/TournamentMeetTeam",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -389,7 +389,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/TournamentMeetTeam/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -404,7 +404,7 @@
     },
     {
       "DownstreamPathTemplate": "/api/TournamentMeetTeam",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -414,7 +414,7 @@
       "UpstreamPathTemplate": "/api/TournamentMeetTeam",
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
+        "AuthenticationProviderKey": "Bearer"
       }
     },
 
@@ -422,7 +422,7 @@
 
     {
       "DownstreamPathTemplate": "/api/storage",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -430,26 +430,23 @@
         }
       ],
       "UpstreamPathTemplate": "/api/storage",
-      "UpstreamHttpMethod": [ "Get" ]
+      "UpstreamHttpMethod": [ "GET" ]
     },
     {
-      "DownstreamPathTemplate": "/api/storage/{id}",
-      "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/storage/{fileId}",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
           "Port": 7047
         }
       ],
-      "UpstreamPathTemplate": "/api/storage/{id}",
-      "UpstreamHttpMethod": [ "Get", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      }
+      "UpstreamPathTemplate": "/api/storage/{fileId}",
+      "UpstreamHttpMethod": [ "GET" ]
     },
     {
       "DownstreamPathTemplate": "/api/storage",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -459,13 +456,26 @@
       "UpstreamPathTemplate": "/api/storage",
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/storage/{fileId}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 7047
+        }
+      ],
+      "UpstreamPathTemplate": "/api/storage/{fileId}",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     }
-
-
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:7152"
+    "BaseUrl": "https://localhost:7152"
   }
 }

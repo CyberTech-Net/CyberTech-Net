@@ -4,6 +4,7 @@ using CyberTech.Core.Dto.Match;
 using CyberTech.Core.IServices;
 using CyberTech.MessagesContracts.TournamentMeets;
 using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CyberTech.Api.Controllers
@@ -25,6 +26,7 @@ namespace CyberTech.Api.Controllers
         /// Получить весь список встреч
         /// </summary>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
             var response = _mapper.Map<List<MatchModel>>(await _service.GetAllAsync(cancellationToken));
@@ -36,6 +38,7 @@ namespace CyberTech.Api.Controllers
         /// </summary>        
         /// <returns></returns>
         [HttpGet("{id:guid}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAsync(Guid id, CancellationToken cancellationToken)
         {
             var result = await _service.GetByIdAsync(id, cancellationToken);

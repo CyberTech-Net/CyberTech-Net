@@ -35,6 +35,7 @@ namespace CyberTech.Api.Controllers
         /// <param name="pageSize"> Объем страницы. </param>
         /// <returns> Страница стран. </returns>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
             var response = _mapper.Map<List<TournamentModel>>(await _service.GetAllAsync(cancellationToken));
@@ -46,6 +47,7 @@ namespace CyberTech.Api.Controllers
         /// </summary>        
         /// <returns></returns>
         [HttpGet("{id:guid}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAsync(Guid id, CancellationToken cancellationToken)
         {
             var tournamentDto = await _service.GetByIdAsync(id, cancellationToken);

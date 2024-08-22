@@ -41,6 +41,7 @@ namespace CyberTech.API.Controllers
         /// Получение всего списка стран 
         /// </summary>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
             var response = _mapper.Map<List<CountryModel>>(await _service.GetAllAsync(cancellationToken));
@@ -52,6 +53,7 @@ namespace CyberTech.API.Controllers
         /// </summary>        
         /// <returns></returns>
         [HttpGet("{id:guid}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAsync(Guid id, CancellationToken cancellationToken)
         {
             var countryDto = await _service.GetByIdAsync(id, cancellationToken);

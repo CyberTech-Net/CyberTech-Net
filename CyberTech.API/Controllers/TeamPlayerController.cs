@@ -19,6 +19,7 @@ namespace CyberTech.API.Controllers
         /// Получение всего списка игроков команды из таблицы "Состав команды"
         /// </summary>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
             var response = _mapper.Map<List<TeamPlayerModel>>(await _service.GetAllAsync(cancellationToken));
@@ -30,6 +31,7 @@ namespace CyberTech.API.Controllers
         /// </summary>        
         /// <returns></returns>
         [HttpGet("{id:guid}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAsync(Guid id, CancellationToken cancellationToken)
         {
             var teamPlayerDto = await _service.GetByIdAsync(id, cancellationToken);

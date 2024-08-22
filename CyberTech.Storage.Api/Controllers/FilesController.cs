@@ -37,6 +37,7 @@ namespace CyberTech.Storage.Api.Controllers
 
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetListOfFiles()
         {
             var files = await _fileService.GetAllFiles();

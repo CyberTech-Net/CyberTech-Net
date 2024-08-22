@@ -39,6 +39,7 @@ namespace CyberTech.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("{id:guid}")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAsync(Guid id, CancellationToken cancellationToken)
         {
             var gameTypeDto = await _service.GetByIdAsync(id, cancellationToken);

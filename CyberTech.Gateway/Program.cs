@@ -17,7 +17,7 @@ namespace CyberTech.Gateway
             }
             else
             {
-                builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+                builder.Configuration.AddJsonFile("ocelot_https.json", optional: false, reloadOnChange: true);
             }
             builder.Services.AddOcelot(builder.Configuration);
 
