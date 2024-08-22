@@ -1,0 +1,16 @@
+{
+  "MatchPlanned": {
+    "ExchangeType": "direct",
+    "ExchangeName": "cybertech.direct",
+    "RoutingKey": "matches.planned",
+    "Durable": "true"
+  },
+  "MatchEnded": {
+    "ExchangeName": "cybertech.direct",
+    "Type": "direct",
+    "Durable": "true",
+    "AutoDelete": "false",
+    "RoutingKey": "matches.ended",
+    "QueueName": "matches.e"
+  }
+}
