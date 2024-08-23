@@ -4,5 +4,6 @@
     {
         public string TitleTeam { get; set; }
         public string Founded { get; set; }
+        public string ImageId { get; set; }
     }
 }

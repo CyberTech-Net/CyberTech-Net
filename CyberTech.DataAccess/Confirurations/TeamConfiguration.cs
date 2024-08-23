@@ -13,7 +13,7 @@ namespace CyberTech.DataAccess.Confirurations
 
             builder.Property(e=>e.TitleTeam).IsRequired().HasMaxLength(50);
             builder.Property(x => x.Founded).IsRequired().HasColumnType("date");
-
+            builder.Property(x => x.ImageId).HasDefaultValue(string.Empty).HasMaxLength(50);
         }
     }
     

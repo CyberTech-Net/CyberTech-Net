@@ -36,6 +36,7 @@ namespace CyberTech.Application.Services
             var team = await _teamRepository.GetAsync(id, CancellationToken.None) ?? throw new Exception($"Запись с идентфикатором {id} не найдена");
             team.TitleTeam = updatingTeamDto.TitleTeam;
             team.Founded = updatingTeamDto.Founded;
+            team.ImageId = updatingTeamDto.ImageId;
             _teamRepository.Update(team);
             await _teamRepository.SaveChangesAsync();
         }
@@ -57,6 +58,12 @@ namespace CyberTech.Application.Services
         {
             ICollection<TeamEntity> entities = await _teamRepository.GetAllAsync(cancellationToken);
             return _mapper.Map<ICollection<TeamEntity>, ICollection<TeamDto>>(entities);
+        }
+
+        public async Task<string> GetTeamImageIdAsync(Guid id)
+        {
+            var team = await _teamRepository.GetAsync(id, CancellationToken.None) ?? throw new Exception($"Запись с идентфикатором {id} не найдена");
+            return team.ImageId;
         }
     }
 }

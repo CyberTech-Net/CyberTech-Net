@@ -21,6 +21,11 @@ namespace CyberTech.Domain.Models.Handbooks
         public DateTime Founded { get; set; }
 
         /// <summary>
+        /// Фото.
+        /// </summary>
+        public string ImageId { get; set; }
+
+        /// <summary>
         /// Игроки.
         /// </summary>
         public virtual List<TeamPlayerEntity> TeamPlayers { get; set; }

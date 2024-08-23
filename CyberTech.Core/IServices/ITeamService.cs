@@ -10,5 +10,6 @@ namespace CyberTech.Core.IServices
         Task DeleteAsync(Guid id);
         Task<ICollection<TeamDto>> GetPagedAsync(int page, int pageSize);
         Task<ICollection<TeamDto>> GetAllAsync(CancellationToken cancellationToken);
+        Task<string> GetTeamImageIdAsync(Guid id);
     }
 }
