@@ -7,7 +7,7 @@
 		<Version>1.0.1</Version>
 		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	</PropertyGroup>
-
+	
 	<!--<Target Name="CopyPackage" AfterTargets="Pack">-->
 	<!--	<Copy SourceFiles="$(OutputPath)$(PackageId).$(PackageVersion).nupkg"-->
 	<!--		  DestinationFolder="$(MSBuildProjectDirectory)/../nugets"-->

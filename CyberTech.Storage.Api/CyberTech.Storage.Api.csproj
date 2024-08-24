@@ -7,10 +7,6 @@
     <UserSecretsId>07af669f-505e-4d9a-a960-f232501c88c0</UserSecretsId>    
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Dockerfile" />
-  </ItemGroup>
-
   <ItemGroup>	  
 	<PackageReference Include="MassTransit" Version="8.2.4" />
 	<PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />

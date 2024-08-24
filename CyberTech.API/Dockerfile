@@ -1,38 +1,31 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# РљРѕРїРёСЂСѓРµРј РІСЃРµ С„Р°Р№Р»С‹ СЂРµС€РµРЅРёСЏ
+# Копируем все файлы решения
 COPY . .
 
-# РЎРѕР·РґР°РµРј РґРёСЂРµРєС‚РѕСЂРёСЋ РґР»СЏ NuGet РїР°РєРµС‚РѕРІ
-RUN mkdir -p /src/nugets
 
-# Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј Р·Р°РІРёСЃРёРјРѕСЃС‚Рё, СЃРѕР±РёСЂР°РµРј Рё РїР°РєСѓРµРј MessagesContracts
-RUN dotnet restore "CyberTech.MessagesContracts/CyberTech.MessagesContracts.csproj"
-RUN dotnet build "CyberTech.MessagesContracts/CyberTech.MessagesContracts.csproj" -c Release
-RUN dotnet pack "CyberTech.MessagesContracts/CyberTech.MessagesContracts.csproj" -c Release -o /src/nugets
-
-# Р’РѕСЃСЃС‚Р°РЅР°РІР»РёРІР°РµРј Р·Р°РІРёСЃРёРјРѕСЃС‚Рё РґР»СЏ РѕСЃРЅРѕРІРЅРѕРіРѕ РїСЂРѕРµРєС‚Р°
+# Восстанавливаем зависимости для основного проекта
 RUN dotnet restore "CyberTech.API/CyberTech.API.csproj"
 
-# РЎРѕР±РёСЂР°РµРј РїСЂРѕРµРєС‚
+# Собираем проект
 WORKDIR "/src/CyberTech.API"
 RUN dotnet build "CyberTech.API.csproj" -c Debug -o /app/build
 
-# РџСѓР±Р»РёРєСѓРµРј РїСЂРѕРµРєС‚
+# Публикуем проект
 FROM build AS publish
 RUN dotnet publish "CyberTech.API.csproj" -c Debug -o /app/publish
 
-# Р¤РёРЅР°Р»СЊРЅС‹Р№ РѕР±СЂР°Р·
+# Финальный образ
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 
-# РЈСЃС‚Р°РЅРѕРІРєР° РЅРµРѕР±С…РѕРґРёРјС‹С… РёРЅСЃС‚СЂСѓРјРµРЅС‚РѕРІ РґР»СЏ РѕС‚Р»Р°РґРєРё
+# Установка необходимых инструментов для отладки
 RUN apt-get update \
     && apt-get install -y unzip procps
 
-# РЈСЃС‚Р°РЅРѕРІРєР° vsdbg (РѕС‚Р»Р°РґС‡РёРє РґР»СЏ .NET Core)
+# Установка vsdbg (отладчик для .NET Core)
 RUN curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l /vsdbg
 
 ENTRYPOINT ["dotnet", "CyberTech.API.dll"]
