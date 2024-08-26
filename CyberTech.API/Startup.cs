@@ -1,11 +1,15 @@
 ﻿using AutoMapper;
 using CyberTech.API.Consumer;
 using CyberTech.API.Mapping;
+using CyberTech.API.Middleware;
 using CyberTech.API.Settings;
+using CyberTech.API.Validators.Tournament;
+using FluentValidation;
 using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using System.Text;
 
 namespace CyberTech.API
@@ -60,11 +64,13 @@ namespace CyberTech.API
             InstallAutomapper(services);
 
             services.AddServices(ConnectionSettings, Configuration);
+            services.AddSerilog();
+
+            services.AddValidatorsFromAssemblyContaining<CreatingTournamentModelValidator>();
 
             services.AddControllers();
 
             services.AddControllers().AddMvcOptions(x => x.SuppressAsyncSuffixInActionNames = false);
-
 
             services.AddMassTransit(busConfigurator =>
             {
@@ -174,6 +180,7 @@ namespace CyberTech.API
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseMiddleware<RequestLoggingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

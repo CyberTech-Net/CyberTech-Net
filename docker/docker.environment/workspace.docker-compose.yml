@@ -39,7 +39,7 @@ services:
     volumes:
       - pg-data1:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5632:5432"
 
   postgres2:
     extends:
@@ -51,7 +51,7 @@ services:
     volumes:
       - pg-data2:/var/lib/postgresql/data
     ports:
-      - "5433:5432"
+      - "5633:5432"
 
   basketdb:
     image: redis:alpine

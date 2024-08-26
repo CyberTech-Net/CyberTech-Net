@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using CyberTech.API.ModelViews.Match;
+using CyberTech.API.Validators.Match;
 using CyberTech.Core.Dto.Match;
 using CyberTech.Core.IServices;
 using CyberTech.MessagesContracts.TournamentMeets;
+using FluentValidation;
 using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -15,12 +17,13 @@ namespace CyberTech.Api.Controllers
     [ApiController]
     [Route("api/[controller]")]
     public class MatchController(IMatchService matchService, IMapper mapper, 
-        IPublishEndpoint publishEndpoint, ILogger<MatchController> logger) : ControllerBase
+        IPublishEndpoint publishEndpoint, ILogger<MatchController> logger, IValidator<CreatingMatchModel> createValidator) : ControllerBase
     {
         private readonly IMatchService _service = matchService;
         private readonly IMapper _mapper = mapper;
         private readonly IPublishEndpoint _publishEndpoint = publishEndpoint;
-        ILogger<MatchController> _logger = logger;
+        private readonly ILogger<MatchController> _logger = logger;
+        private readonly IValidator<CreatingMatchModel> _createValidator = createValidator;
 
         /// <summary>
         /// Получить весь список встреч
@@ -52,6 +55,10 @@ namespace CyberTech.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAsync(CreatingMatchModel creatingMatchModel)
         {
+            var validation = _createValidator.Validate(creatingMatchModel);
+            if(!validation.IsValid)
+                return BadRequest(validation.Errors);
+
             var newId = await _service.CreateAsync(_mapper.Map<CreatingMatchDto>(creatingMatchModel));
             DateTime startDateTime = creatingMatchModel.StartDateTime;
 

@@ -50,6 +50,7 @@ namespace CyberTech.API
                 .AddTransient<ITeamPlayerRepository, TeamPlayerRepository>()
                 .AddTransient<IMatchResultRepository, MatchResultRepository>();
             return serviceCollection;
-        }      
+        }
+       
     }
 }

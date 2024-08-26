@@ -14,7 +14,6 @@ namespace CyberTech.Api.Controllers
     /// Команды
     /// </summary>
     [ApiController]
-    [Authorize]
     [Route("api/[controller]")]
     public class TeamController(ITeamService teamService, IMapper mapper,
         IPublishEndpoint publishEndpoint, ILogger<TeamController> logger) : Controller

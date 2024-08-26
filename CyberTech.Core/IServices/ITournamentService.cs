@@ -4,11 +4,11 @@ namespace CyberTech.Core.IServices
 {
     public interface ITournamentService
     {
-        Task<TournamentDto> GetByIdAsync(Guid id, CancellationToken cancellationToken);
-        Task<Guid> CreateAsync(CreatingTournamentDto creatingTournamentDto);
-        Task UpdateAsync(Guid id, UpdatingTournamentDto updatingTournamentDto);
-        Task DeleteAsync(Guid id);
-        Task<ICollection<TournamentDto>> GetPagedAsync(int page, int pageSize);
-        Task<ICollection<TournamentDto>> GetAllAsync(CancellationToken cancellationToken);
+        Task<TournamentDto?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<Guid> CreateAsync(CreatingTournamentDto creatingTournamentDto, CancellationToken cancellationToken = default);
+        Task UpdateAsync(Guid id, UpdatingTournamentDto updatingTournamentDto, CancellationToken cancellationToken = default);
+        Task DeleteAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<ICollection<TournamentDto>> GetPagedAsync(int page, int pageSize, CancellationToken cancellationToken = default);
+        Task<ICollection<TournamentDto>> GetAllAsync(CancellationToken cancellationToken = default);
     }
 }

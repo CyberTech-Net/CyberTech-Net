@@ -17,13 +17,14 @@ namespace CyberTech.Application.Services
             _tournamentRepository = tournamentRepository;
         }
 
-        public async Task<TournamentDto> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+        public async Task<TournamentDto?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             var tournament = await _tournamentRepository.GetAsync(id, CancellationToken.None);
+            if (tournament == null) return default;
             return _mapper.Map<TournamentEntity, TournamentDto>(tournament);
         }
 
-        public async Task<Guid> CreateAsync(CreatingTournamentDto creatingTournamentDto)
+        public async Task<Guid> CreateAsync(CreatingTournamentDto creatingTournamentDto, CancellationToken cancellationToken = default)
         {
             var tournament = _mapper.Map<CreatingTournamentDto, TournamentEntity>(creatingTournamentDto);
             var creatingTournament = await _tournamentRepository.AddAsync(tournament);
@@ -31,7 +32,7 @@ namespace CyberTech.Application.Services
             return creatingTournament.Id;
         }
 
-        public async Task UpdateAsync(Guid id, UpdatingTournamentDto updatingTournamentDto)
+        public async Task UpdateAsync(Guid id, UpdatingTournamentDto updatingTournamentDto, CancellationToken cancellationToken = default)
         {
             var tournament = await _tournamentRepository.GetAsync(id, CancellationToken.None) ?? throw new Exception($"Запись с идентфикатором {id} не найдена");
             tournament.TitleTournament = updatingTournamentDto.TitleTournament;
@@ -44,20 +45,20 @@ namespace CyberTech.Application.Services
             await _tournamentRepository.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(Guid id, CancellationToken cancellationToken = default)
         {
             var tournament = await _tournamentRepository.GetAsync(id, CancellationToken.None) ?? throw new Exception($"Запись с идентфикатором {id} не найдена");
             _tournamentRepository.Delete(tournament);
             await _tournamentRepository.SaveChangesAsync();
         }
 
-        public async Task<ICollection<TournamentDto>> GetPagedAsync(int page, int pageSize)
+        public async Task<ICollection<TournamentDto>> GetPagedAsync(int page, int pageSize, CancellationToken cancellationToken = default)
         {
             ICollection<TournamentEntity> entities = await _tournamentRepository.GetPagedAsync(page, pageSize);
             return _mapper.Map<ICollection<TournamentEntity>, ICollection<TournamentDto>>(entities);
         }
 
-        public async Task<ICollection<TournamentDto>> GetAllAsync(CancellationToken cancellationToken)
+        public async Task<ICollection<TournamentDto>> GetAllAsync(CancellationToken cancellationToken = default)
         {
             ICollection<TournamentEntity> entities = await _tournamentRepository.GetAllAsync(cancellationToken);
             return _mapper.Map<ICollection<TournamentEntity>, ICollection<TournamentDto>>(entities);
