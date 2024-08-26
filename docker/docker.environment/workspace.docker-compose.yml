@@ -73,13 +73,45 @@ services:
       - "27017:27017"
     volumes:
       - mongodb_data:/data/db
+      
+      
+  baget:
+    image: loicsharma/baget:latest
+    ports:
+      - "5555:80"
+    environment:
+      - ApiKey=CyberTech_BaGet_9x7K2P4mL8nQ3vF5
+      - Storage__Type=FileSystem
+      - Storage__Path=/var/baget/packages
+      - Database__Type=Sqlite
+      - Database__ConnectionString=Data Source=/var/baget/baget.db
+      - Search__Type=Database
+    volumes:
+      - baget-data:/var/baget
 
+  package-builder:
+    build:
+      context: ../..
+      dockerfile: docker/docker.environment/Dockerfile.package-builder
+    depends_on:
+      - baget
+    environment:
+      - NUGET_SOURCE=http://baget/v3/index.json
+      - NUGET_API_KEY=CyberTech_BaGet_9x7K2P4mL8nQ3vF5
+    command: >
+      /bin/bash -c "
+      echo 'Waiting for BaGet to start...' &&
+      sleep 10 &&
+      dotnet nuget push '/src/nugets/*.nupkg' --source $$NUGET_SOURCE --api-key $$NUGET_API_KEY --skip-duplicate
+      "
+      
 volumes:
   rabbitmq_data:
   mongodb_data:
   pg-data1:
   pg-data2:
   basketdb_data:
+  baget-data:
  
 networks:
   default:
