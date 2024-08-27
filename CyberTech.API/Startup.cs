@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CyberTech.API.Consumer;
+using CyberTech.API.Hubs;
 using CyberTech.API.Mapping;
 using CyberTech.API.Middleware;
 using CyberTech.API.Settings;
@@ -9,6 +10,7 @@ using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Prometheus;
 using Serilog;
 using System.Text;
 
@@ -175,16 +177,20 @@ namespace CyberTech.API
 
             app.UseStaticFiles();
             app.UseCors();
-
+            app.UseMetricServer();
+            app.UseHttpMetrics();
             app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseMiddleware<AuthenticatorMiddleware>();
             app.UseMiddleware<RequestLoggingMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("chat");
+                endpoints.MapMetrics();
             });
         }
     }
