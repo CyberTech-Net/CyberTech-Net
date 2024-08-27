@@ -183,7 +183,6 @@ namespace CyberTech.API
 
             app.UseAuthentication();
             app.UseAuthorization();
-            app.UseMiddleware<AuthenticatorMiddleware>();
             app.UseMiddleware<RequestLoggingMiddleware>();
 
             app.UseEndpoints(endpoints =>
