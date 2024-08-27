@@ -17,7 +17,9 @@ namespace CyberTech.API
             services
                     .InstallServices()
                     .ConfigureContext(connectionSettings.DBConnection)
-                    .InstallRepositories();
+                    .InstallRepositories()
+                    .InstallSignalR();
+
             return services;
         }
 
@@ -51,6 +53,12 @@ namespace CyberTech.API
                 .AddTransient<IMatchResultRepository, MatchResultRepository>();
             return serviceCollection;
         }
-       
+
+        private static IServiceCollection InstallSignalR(this IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddSignalR().AddMessagePackProtocol();
+            return serviceCollection;
+        }
+
     }
 }

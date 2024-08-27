@@ -3,17 +3,17 @@ using System.Text;
 
 namespace CyberTech.API.Middleware
 {
-    public class RequestLoggingMiddleware(RequestDelegate next)
+    public class RequestLoggingMiddleware(RequestDelegate next, ILogger<RequestLoggingMiddleware> logger)
     {
         private readonly RequestDelegate _next = next;
+        private readonly ILogger<RequestLoggingMiddleware> _logger = logger;
 
         public async Task InvokeAsync(HttpContext context)
         {
-
             var httpMethod = context.Request.Method;
             var endpoint = context.Request.Path;
 
-            Log.Information("Incoming request: Method = {HttpMethod}, Endpoint = {Endpoint}", httpMethod, endpoint);
+            _logger.LogInformation("Incoming request: Method = {HttpMethod}, Endpoint = {Endpoint}", httpMethod, endpoint);
 
             if(httpMethod != "GET") 
             {
@@ -30,7 +30,7 @@ namespace CyberTech.API.Middleware
             await context.Request.Body.ReadAsync(buffer);
             var requestBodyText = Encoding.UTF8.GetString(buffer);
             context.Request.Body.Position = 0;
-            Log.Information("Request body: {RequestBody}", requestBodyText);
+            _logger.LogInformation("Request body: {RequestBody}", requestBodyText);
         }
     }
 }

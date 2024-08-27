@@ -10,6 +10,7 @@ using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Prometheus;
 using Serilog;
 using System.Text;
 
@@ -177,7 +178,8 @@ namespace CyberTech.API
 
             app.UseStaticFiles();
             app.UseCors();
-
+            app.UseMetricServer();
+            app.UseHttpMetrics();
             app.UseRouting();
 
             app.UseAuthentication();
@@ -188,6 +190,7 @@ namespace CyberTech.API
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<MessageHub>("/messageHub");
+                endpoints.MapMetrics();
             });
         }
     }
