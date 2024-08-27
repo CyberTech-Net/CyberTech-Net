@@ -1,16 +1,32 @@
 {
 
   "Routes": [
-    //"CyberTechApi": "http://localhost:7050",
+    //"CyberTechApi": "http://cybertech-storage-api:8080",
 
-   // Countries 
+    //чат
+
+    {
+      "DownstreamPathTemplate": "/messageHub/{everything}",
+      "DownstreamScheme": "http", // или "https", если используется SSL
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "cybertech-administration-api",
+          "Port": 8080
+        }
+      ],
+      "UpstreamPathTemplate": "/api/messageHub/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
+    }
+
+
+    // Countries 
     {
       "DownstreamPathTemplate": "/api/country",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/country",
@@ -21,30 +37,30 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/country/{id}",
-      "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      }
+      "UpstreamHttpMethod": [ "Get", "PUT", "DELETE"],
+        "AuthenticationOptions": {
+         "AuthenticationProviderKey": "Bearer"
+        }
     },
     {
       "DownstreamPathTemplate": "/api/country",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/country",
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
-      }
+         "AuthenticationProviderKey": "Bearer"
+       }
     },
 
 
@@ -54,8 +70,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/GameType",
@@ -66,30 +82,30 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/GameType/{id}",
       "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      }
+        "AuthenticationOptions": {
+         "AuthenticationProviderKey": "Bearer"
+       }
     },
     {
       "DownstreamPathTemplate": "/api/GameType",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/GameType",
       "UpstreamHttpMethod": [ "POST" ],
-      "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
-      }
+       "AuthenticationOptions": {
+         "AuthenticationProviderKey": "Bearer"
+       }
     },
 
     //info
@@ -99,8 +115,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Info",
@@ -111,30 +127,30 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Info/{id}",
       "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      }
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "Bearer"
+        }
     },
     {
       "DownstreamPathTemplate": "/api/Info",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Info",
       "UpstreamHttpMethod": [ "POST" ],
-      "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
-      }
+       "AuthenticationOptions": {
+         "AuthenticationProviderKey": "Bearer"
+       }
     },
 
     //Player
@@ -144,8 +160,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Player",
@@ -156,30 +172,30 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Player/{id}",
       "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      }
+       "AuthenticationOptions": {
+          "AuthenticationProviderKey": "Bearer"
+        }
     },
     {
       "DownstreamPathTemplate": "/api/Player",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Player",
       "UpstreamHttpMethod": [ "POST" ],
-      "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
-      }
+       "AuthenticationOptions": {
+         "AuthenticationProviderKey": "Bearer"
+       }
     },
 
     //Role
@@ -189,8 +205,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Role",
@@ -204,8 +220,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Team",
@@ -216,29 +232,29 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Team/{id}",
       "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      }
+       "AuthenticationOptions": {
+          "AuthenticationProviderKey": "Bearer"
+       }
     },
     {
       "DownstreamPathTemplate": "/api/Team",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Team",
       "UpstreamHttpMethod": [ "POST" ],
-      "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
+       "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
 
@@ -249,8 +265,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/TeamPlayer",
@@ -261,40 +277,40 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/TeamPlayer/{id}",
       "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      }
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "Bearer"
+       }
     },
     {
       "DownstreamPathTemplate": "/api/TeamPlayer",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/TeamPlayer",
       "UpstreamHttpMethod": [ "POST" ],
-      "AuthenticationOptions": {
+       "AuthenticationOptions": {
        "AuthenticationProviderKey": "Bearer"
       }
     },
 
-    //Tournament
+    // Tournament
     {
       "DownstreamPathTemplate": "/api/Tournament",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Tournament",
@@ -305,14 +321,14 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Tournament/{id}",
       "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ],
       "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
+      "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -320,15 +336,15 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/Tournament",
       "UpstreamHttpMethod": [ "POST" ],
       "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
-      }
+         "AuthenticationProviderKey": "Bearer"
+       }
     },
     //TournamentMeet
 
@@ -337,8 +353,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/TournamentMeet",
@@ -349,30 +365,30 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/TournamentMeet/{id}",
       "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      }
+        "AuthenticationOptions": {
+         "AuthenticationProviderKey": "Bearer"
+        }
     },
     {
       "DownstreamPathTemplate": "/api/TournamentMeet",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/TournamentMeet",
       "UpstreamHttpMethod": [ "POST" ],
-      "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
-      }
+       "AuthenticationOptions": {
+         "AuthenticationProviderKey": "Bearer"
+       }
     },
     //TournamentMeetTeam
     {
@@ -380,8 +396,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/TournamentMeetTeam",
@@ -392,41 +408,41 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/TournamentMeetTeam/{id}",
       "UpstreamHttpMethod": [ "Get", "PUT", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      }
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "Bearer"
+        }
     },
     {
       "DownstreamPathTemplate": "/api/TournamentMeetTeam",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7050
+          "Host": "cybertech-administration-api",
+          "Port": 8080
         }
       ],
       "UpstreamPathTemplate": "/api/TournamentMeetTeam",
       "UpstreamHttpMethod": [ "POST" ],
-      "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
-      }
+       "AuthenticationOptions": {
+         "AuthenticationProviderKey": "Bearer"
+       }
     },
 
-    //Storage "http://localhost:7047"
+    //Storage "http://cybertech-administration-api:80"
 
     {
       "DownstreamPathTemplate": "/api/storage",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7047
+          "Host": "cybertech-storage-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/storage",
@@ -437,35 +453,35 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7047
+          "Host": "cybertech-storage-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/storage/{id}",
       "UpstreamHttpMethod": [ "Get", "DELETE" ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      }
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "Bearer"
+        }
     },
     {
       "DownstreamPathTemplate": "/api/storage",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 7047
+          "Host": "cybertech-storage-api",
+          "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/api/storage",
       "UpstreamHttpMethod": [ "POST" ],
-      "AuthenticationOptions": {
-       "AuthenticationProviderKey": "Bearer"
-      }
+       "AuthenticationOptions": {
+         "AuthenticationProviderKey": "Bearer"
+       }
     }
 
 
   ],
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:7152"
+    "BaseUrl": "http://cybertech-storage-api:7152"
   }
 }

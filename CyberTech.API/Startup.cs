@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CyberTech.API.Consumer;
+using CyberTech.API.HubSignalR;
 using CyberTech.API.Mapping;
 using CyberTech.API.Middleware;
 using CyberTech.API.Settings;
@@ -65,6 +66,7 @@ namespace CyberTech.API
 
             services.AddServices(ConnectionSettings, Configuration);
             services.AddSerilog();
+            services.AddSignalR();
 
             services.AddValidatorsFromAssemblyContaining<CreatingTournamentModelValidator>();
 
@@ -185,6 +187,7 @@ namespace CyberTech.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<MessageHub>("/messageHub");
             });
         }
     }

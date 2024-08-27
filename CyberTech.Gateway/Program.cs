@@ -17,7 +17,7 @@ namespace CyberTech.Gateway
             }
             else
             {
-                builder.Configuration.AddJsonFile("ocelot_https.json", optional: false, reloadOnChange: true);
+                builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
             }
             builder.Services.AddOcelot(builder.Configuration);
 
@@ -27,10 +27,10 @@ namespace CyberTech.Gateway
                         builder =>
                         {
                             builder.WithOrigins("http://localhost:3000")
-                                .AllowAnyHeader()
-                                .AllowAnyMethod()
-                                .AllowAnyOrigin()
-                                .WithExposedHeaders("*");
+                                   .AllowAnyMethod()
+                                   .AllowAnyHeader()
+                                   .AllowCredentials()
+                                  .WithExposedHeaders("*");
                         });
             });
 
