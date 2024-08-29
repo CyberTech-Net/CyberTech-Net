@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Cybertech.MatchApi": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+﻿using AutoMapper;
+using CyberTech.API.ModelViews.Tournament;
+using CyberTech.Core.Dto.Tournament;
+using CyberTech.Core.IServices;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace CyberTech.Api.Controllers
+{
+    /// <summary>
+    /// Турниры
+    /// </summary>
+    [ApiController]
+    [Authorize]
+    [Route("api/[controller]")]
+    public class TournamentController(ITournamentService tournamentService, IMapper mapper) : ControllerBase
+    {
+        private readonly ITournamentService _service = tournamentService;
+        private readonly IMapper _mapper = mapper;
+
+        /// <summary>
+        /// Получение списка турниров c пагинацией из таблицы "Турниры"
+        /// </summary>
+        [HttpGet("list/{page}/{itemsPerPage}")]
+        public async Task<IActionResult> GetPagedAsync(int page, int itemsPerPage)
+        {
+            var response = _mapper.Map<List<TournamentModel>>(await _service.GetPagedAsync(page, itemsPerPage));
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Получение всего списка турниров из таблицы "Турниры"
+        /// </summary>
+        /// <param name="page"> Номер страницы. </param>
+        /// <param name="pageSize"> Объем страницы. </param>
+        /// <returns> Страница стран. </returns>
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
+        {
+            var response = _mapper.Map<List<TournamentModel>>(await _service.GetAllAsync(cancellationToken));
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Получение записи по ее ID из таблицы "Турниры"
+        /// </summary>        
+        /// <returns></returns>
+        [HttpGet("{id:guid}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAsync(Guid id, CancellationToken cancellationToken)
+        {
+            var tournamentDto = await _service.GetByIdAsync(id, cancellationToken);
+            return Ok(_mapper.Map<TournamentDto, TournamentModel>(tournamentDto));
+        }
+
+        /// <summary>
+        /// Вставка записи в таблице "Турниры"
+        /// </summary>        
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> AddAsync([FromBody] CreatingTournamentModel creatingTournamentModel)
+        {
+            return Ok(await _service.CreateAsync(_mapper.Map<CreatingTournamentDto>(creatingTournamentModel)));
+        }
+
+        /// <summary>
+        /// Изменение записи в таблице "Турниры"
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut("{id:guid}")]
+        public async Task<IActionResult> EditAsync(Guid id, [FromBody] UpdatingTournamentModel updatingTournamentModel)
+        {
+            await _service.UpdateAsync(id, _mapper.Map<UpdatingTournamentModel, UpdatingTournamentDto>(updatingTournamentModel));
+            return Ok();
+        }
+
+        /// <summary>
+        /// Удаление записи из таблицы "Турниры"
+        /// </summary>        
+        /// <returns></returns>
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> DeleteAsync(Guid id)
+        {
+            await _service.DeleteAsync(id);
+            return Ok();
+        }
+    }
+}
