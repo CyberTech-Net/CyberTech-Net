@@ -23,22 +23,21 @@ namespace CyberTech.Application.Services
         public async Task CreateMatchResultAsync(Guid MatchId)
         {
             // Получаем запись из Match
-            var match = _matchService.GetByIdAsync(MatchId, CancellationToken.None).Result ?? throw new Exception($"Запись с идентфикатором {MatchId} не найдена");
+            var match = await _matchService.GetByIdAsync(MatchId, CancellationToken.None) ?? throw new Exception($"Запись с идентфикатором {MatchId} не найдена");
 
-            Guid firstTeamId = match.FirstTeam.Id;
-            Guid secondtTeamId = match.SecondTeam.Id;
             int score1 = rand.Next(0, 100);
             int score2 = rand.Next(0, 100);
+
             var firstResult = new CreatingMatchResultDto
             {
-                TeamId = firstTeamId,
+                TeamId = match.FirstTeam.Id,
                 MatchId = MatchId,
                 Score = score1,
                 IsWin = score1 > score2
             };
             var secondResult = new CreatingMatchResultDto
             {
-                TeamId = secondtTeamId,
+                TeamId = match.SecondTeam.Id,
                 MatchId = MatchId,
                 Score = score2,
                 IsWin = score2 >= score1

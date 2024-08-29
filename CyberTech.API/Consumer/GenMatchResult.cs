@@ -15,16 +15,15 @@ namespace CyberTech.API.Consumer
             _genMatchResultService = genMatchResultService;
         }
 
-        public Task Consume(ConsumeContext<MatchForGenResult> context)
+        public async Task Consume(ConsumeContext<MatchForGenResult> context)
         {
             var message = context.Message;
             if (message != null)
             {
                 _logger.LogInformation("{data} Received MatchForGenResult with Id={id}", DateTime.UtcNow, message.MatchId);
                 // Запускаем сервис генерации с записью в БД.
-                _genMatchResultService.CreateMatchResultAsync(message.MatchId);
+                await _genMatchResultService.CreateMatchResultAsync(message.MatchId);
             }
-            return Task.CompletedTask;
         }
     }
 }
