@@ -1,0 +1,103 @@
+﻿version: '3.8'
+services:
+ # CyberTech Gateway 
+  cybertech-gateway:
+    build:
+      context: ../..
+      dockerfile: CyberTech.Gateway/Dockerfile
+    container_name: 'cybertech-gateway'
+    restart: on-failure
+    ports:
+      - "7152:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    depends_on:
+      - cybertech-administration-api
+    networks:
+      - myLocalNetwork
+      
+      
+      
+  #CyberTech Api
+  cybertech-administration-api:
+    build: 
+      context: ../..
+      dockerfile: CyberTech.API/Dockerfile
+    container_name: 'cybertech-administration-api'
+    restart: on-failure
+    ports:
+      - "7050:8080"
+      - "5292:5000"  # порт для отладки
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080;http://+:5000
+      - POSTGRES_CONNECTION_STRING=Server=postgres2;Port=5432;Database=postgres2;User Id=postgres;Password=password;
+      #- RABBITMQ_CONNECTION_STRING=amqp://guest:guest@rabbit:5672/      
+      - RabbitSetting__HostName=rabbitmqhost
+      - RabbitSetting__Port=
+      - RabbitSetting__UserName=guest
+      - RabbitSetting__Password=guest    
+    networks:
+      - myLocalNetwork   
+      
+  # CyberTech Storage Api
+  cybertech-storage-api:
+    build:
+      context: ../..
+      dockerfile: CyberTech.Storage.Api/Dockerfile
+    container_name: 'cybertech-storage-api'
+    restart: on-failure
+    ports:
+      - "7047:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - DataStorageSettings__ConnectionString=mongodb://mongo_user:mongo_password@mongodb:27017
+      - DataStorageSettings__DatabaseName=DataStorage
+      - RabbitSetting__HostName=rabbitmqhost
+      - RabbitSetting__Port=
+      - RabbitSetting__UserName=guest
+      - RabbitSetting__Password=guest 
+    networks:
+      - myLocalNetwork
+      
+  # CyberTech Auth Api
+  cybertech-auth-api:
+    build:
+      context: ../..
+      dockerfile: CyberTech.AuthApi/Dockerfile
+    container_name: 'cybertech-auth-api'
+    restart: on-failure
+    ports:
+      - "7035:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - DBConnection=Host=postgres1;Database=postgres1;Username=postgres;Password=password;Port=5432
+    networks:
+      - myLocalNetwork
+
+  # CyberTech Match Api
+  cybertech-match-api:
+    build:
+      context: ../..
+      dockerfile: CyberTech.MatchApi/Dockerfile
+    container_name: 'cybertech-match-api'
+    restart: on-failure
+    ports:
+      - "7036:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - RabbitSetting__HostName=rabbitmqhost
+      - RabbitSetting__Port=
+      - RabbitSetting__UserName=guest
+      - RabbitSetting__Password=guest
+    networks:
+      - myLocalNetwork
+
+
+networks:
+  myLocalNetwork:
+    external: true

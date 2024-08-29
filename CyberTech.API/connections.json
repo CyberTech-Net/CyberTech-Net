@@ -1,0 +1,14 @@
+{
+  "Connections": {
+    // "DBConnection": "Server=(localdb)\\mssqllocaldb;Database=CyberTech;Trusted_Connection=True;MultipleActiveResultSets=true",
+    "DBConnection": "Host=postgres2;Database=postgres2;Username=postgres;Password=password;Port=5432",
+
+    "RmqSettings": {
+      "Host": "rabbit",
+      "VHost": "/",
+      "Login": "guest",
+      "Password": "guest"
+    }
+  }
+}
+
