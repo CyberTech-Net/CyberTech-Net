@@ -71,8 +71,6 @@ namespace CyberTech.API
 
             services.AddSerilog();
 
-            services.AddSignalR();
-
             services.AddValidatorsFromAssemblyContaining<CreatingTournamentModelValidator>();
 
             services.AddControllers();
@@ -185,6 +183,7 @@ namespace CyberTech.API
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CyberTechNet.Api"));
 
             app.UseHttpsRedirection();
+            app.UseWebSockets();
 
             app.UseStaticFiles();
             app.UseCors("ApiCorsPolicy");

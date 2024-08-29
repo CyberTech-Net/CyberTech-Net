@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.SignalR;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.SignalR;
 
 namespace CyberTech.API.HubSignalR
 {
+    [AllowAnonymous]
     public class MessageHub : Hub
     {
         public async Task SendMessage(string message)
@@ -26,7 +28,7 @@ namespace CyberTech.API.HubSignalR
 
         public override async Task OnConnectedAsync()
         {
-            await Clients.Caller.SendAsync("ReceiveMessage", new
+           await Clients.Caller.SendAsync("ReceiveMessage", new
             {
                 id = Guid.NewGuid().ToString(),
                 text = "Welcome to the chat!"
