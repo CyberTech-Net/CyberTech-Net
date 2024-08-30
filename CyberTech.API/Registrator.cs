@@ -1,4 +1,5 @@
-﻿using CyberTech.API.Settings;
+﻿﻿using CyberTech.API.HubSignalR;
+using CyberTech.API.Settings;
 using CyberTech.Application.Services;
 using CyberTech.Core.IRepositories;
 using CyberTech.Core.IServices;
@@ -57,7 +58,10 @@ namespace CyberTech.API
 
         private static IServiceCollection InstallSignalR(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddSignalR().AddMessagePackProtocol();
+            serviceCollection.AddSignalR().AddHubOptions<MessageHub>(options =>
+                {
+                    options.EnableDetailedErrors = true;
+                });
             return serviceCollection;
         }
     }

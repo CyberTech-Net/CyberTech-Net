@@ -32,7 +32,7 @@ namespace CyberTech.Api.Controllers
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
             var response = _mapper.Map<List<MatchModel>>(await _service.GetAllAsync(cancellationToken));
-            return Ok(response);
+            return Ok(response.OrderByDescending(x => x.StartDateTime));
         }
 
         /// <summary>

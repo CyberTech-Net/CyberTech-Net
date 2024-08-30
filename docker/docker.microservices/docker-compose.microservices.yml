@@ -1,4 +1,4 @@
-﻿version: '3.8'
+version: '3.8'
 services:
  # CyberTech Gateway 
   cybertech-gateway:
@@ -12,12 +12,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
+      - TZ=Etc/GMT-3
     depends_on:
       - cybertech-administration-api
     networks:
-      - myLocalNetwork
-      
-      
+      - myLocalNetwork   
       
   #CyberTech Api
   cybertech-administration-api:
@@ -37,9 +36,10 @@ services:
       - RabbitSetting__HostName=rabbitmqhost
       - RabbitSetting__Port=
       - RabbitSetting__UserName=guest
-      - RabbitSetting__Password=guest    
+      - RabbitSetting__Password=guest   
+      - TZ=Etc/GMT-3 
     networks:
-      - myLocalNetwork   
+      - myLocalNetwork
       
   # CyberTech Storage Api
   cybertech-storage-api:
@@ -59,6 +59,7 @@ services:
       - RabbitSetting__Port=
       - RabbitSetting__UserName=guest
       - RabbitSetting__Password=guest 
+      - TZ=Etc/GMT-3
     networks:
       - myLocalNetwork
       
@@ -75,6 +76,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - DBConnection=Host=postgres1;Database=postgres1;Username=postgres;Password=password;Port=5432
+      - TZ=Etc/GMT-3
     networks:
       - myLocalNetwork
 
@@ -94,9 +96,9 @@ services:
       - RabbitSetting__Port=
       - RabbitSetting__UserName=guest
       - RabbitSetting__Password=guest
+      - TZ=Etc/GMT-3
     networks:
       - myLocalNetwork
-
 
 networks:
   myLocalNetwork:

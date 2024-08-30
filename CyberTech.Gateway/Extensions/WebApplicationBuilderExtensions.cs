@@ -2,8 +2,6 @@
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-
-
 namespace CyberTech.Gateway.Extensions
 {
     public static class WebApplicationBuilderExtensions

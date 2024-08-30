@@ -41,7 +41,7 @@ namespace CyberTech.Api.Controllers
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken)
         {
             var response = _mapper.Map<List<PlayerModel>>(await _service.GetAllAsync(cancellationToken));
-            return Ok(response);
+            return Ok(response.OrderBy(x => x.SecondName).ThenBy(x=>x.FirstName));
         }
 
         /// <summary>

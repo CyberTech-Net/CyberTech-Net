@@ -5,7 +5,6 @@ using CyberTech.Core.IServices;
 using FluentValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading;
 
 namespace CyberTech.Api.Controllers
 {
@@ -43,7 +42,7 @@ namespace CyberTech.Api.Controllers
         public async Task<IActionResult> GetAllAsync(CancellationToken cancellationToken = default)
         {
             var response = _mapper.Map<List<TournamentModel>>(await _service.GetAllAsync(cancellationToken));
-            return Ok(response);
+            return Ok(response.OrderByDescending(x => x.DateTournamentInit));
         }
 
         /// <summary>

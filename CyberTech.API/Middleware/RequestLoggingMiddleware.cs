@@ -1,5 +1,4 @@
-﻿using Serilog;
-using System.Text;
+﻿using System.Text;
 
 namespace CyberTech.API.Middleware
 {

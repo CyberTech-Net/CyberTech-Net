@@ -12,13 +12,15 @@ namespace CyberTech.API.Validators.Tournament
 
             RuleFor(t => t.TitleTournament)
                 .NotEmpty().WithMessage("Название турнира не может быть пустым.")
-                .Length(1, 100).WithMessage("Название турнира должно содержать от 1 до 100 символов.");
+                .Length(1, 150).WithMessage("Название турнира должно содержать от 1 до 150 символов.");
 
             RuleFor(t => t.TypeTournament)
                 .NotEmpty().WithMessage("Тип турнира не может быть пустым.");
 
-            RuleFor(t => t.DateTournamentInit)
-                .GreaterThan(DateTime.Now).WithMessage("Дата начала турнира должна быть в будущем.");
+            // Правило неудобно для наполнения базы и генерации результатов матча
+
+            /*RuleFor(t => t.DateTournamentInit)
+                .GreaterThan(DateTime.Now).WithMessage("Дата начала турнира должна быть в будущем.");*/
 
             RuleFor(t => t.DateTournamentEnd)
                 .GreaterThan(t => t.DateTournamentInit).WithMessage("Дата окончания турнира должна быть позже даты его начала.");

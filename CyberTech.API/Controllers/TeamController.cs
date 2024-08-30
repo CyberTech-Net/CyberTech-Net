@@ -42,7 +42,7 @@ namespace CyberTech.Api.Controllers
         {
             var test = await _service.GetAllAsync(cancellationToken);
             var response = _mapper.Map<List<TeamModel>>(test);
-            return Ok(response);
+            return Ok(response.OrderBy(x => x.TitleTeam));
         }
 
         /// <summary>

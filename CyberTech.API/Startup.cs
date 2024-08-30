@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+﻿﻿using AutoMapper;
 using CyberTech.API.Consumer;
 using CyberTech.API.HubSignalR;
 using CyberTech.API.Mapping;
@@ -70,8 +70,6 @@ namespace CyberTech.API
             services.AddServices(ConnectionSettings, Configuration);
 
             services.AddSerilog();
-
-            services.AddSignalR();
 
             services.AddValidatorsFromAssemblyContaining<CreatingTournamentModelValidator>();
 
@@ -185,6 +183,7 @@ namespace CyberTech.API
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CyberTechNet.Api"));
 
             app.UseHttpsRedirection();
+            app.UseWebSockets();
 
             app.UseStaticFiles();
             app.UseCors("ApiCorsPolicy");
